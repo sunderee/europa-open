@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Europa Open</string>
+    <string name="trip_plan">Plan your trip abroad by selecting the starting and destination country, retrieving all relevant info you need before leaving your home.</string>
     <string name="starting_country">Starting country</string>
     <string name="destination_country">Destination country</string>
     <string name="transition_country">(Optional) transit country</string>
-    <string name="request_info">Request Info</string>
+    <string name="request_travel_info">Request Travel Info</string>
+    <string name="country_status">Choose a country from the list to obtain detailed measures in place</string>
+    <string name="country">Select from the list</string>
+    <string name="current_status">Measures In Place</string>
 </resources>
