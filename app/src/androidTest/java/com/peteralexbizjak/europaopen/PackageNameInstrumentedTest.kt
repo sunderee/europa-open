@@ -11,6 +11,7 @@ internal class PackageNameInstrumentedTest {
     @Test
     fun useAppContext() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        println("Application context package name: ${appContext.packageName}")
         assertEquals("com.peteralexbizjak.europaopen", appContext.packageName)
     }
 }

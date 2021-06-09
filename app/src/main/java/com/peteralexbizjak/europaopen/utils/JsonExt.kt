@@ -4,7 +4,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-private val json = Json {
+internal val json = Json {
     ignoreUnknownKeys = true
     isLenient = true
 }
