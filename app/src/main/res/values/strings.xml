@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Europa Open</string>
+    <string name="starting_country">Starting country</string>
+    <string name="destination_country">Destination country</string>
+    <string name="transition_country">(Optional) transit country</string>
+    <string name="request_info">Request Info</string>
 </resources>
