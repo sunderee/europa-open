@@ -1,0 +1,2 @@
+rootProject.name = "Europa Open"
+include ':app'
