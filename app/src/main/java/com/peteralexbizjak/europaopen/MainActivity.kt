@@ -8,6 +8,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.peteralexbizjak.europaopen.databinding.ActivityMainBinding
 import com.peteralexbizjak.europaopen.di.countriesViewModelModule
+import com.peteralexbizjak.europaopen.di.measuresViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@MainActivity)
-            modules(countriesViewModelModule)
+            modules(countriesViewModelModule, measuresViewModelModule)
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)

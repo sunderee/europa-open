@@ -26,13 +26,6 @@ internal class RegionUnitTest : KoinTest {
     }
 
     @Test
-    fun testRequestingAllRegions() {
-        val regions = runBlocking { repository.requestAllRegions() }
-        println("We've got ${regions.size} regions in total")
-        assertTrue(regions.isNotEmpty())
-    }
-
-    @Test
     fun testRequestingFrenchRegions() {
         val frenchRegions = runBlocking { repository.requestRegionsPerCountry("FRA") }
         println("French regions: ${frenchRegions.joinToString("\n") { "${it.region}: ${it.color}" }}")
