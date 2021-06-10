@@ -2,6 +2,7 @@ package com.peteralexbizjak.europaopen.api.services
 
 import com.peteralexbizjak.europaopen.api.models.DomainDataModel
 import com.peteralexbizjak.europaopen.api.models.DomainModel
+import com.peteralexbizjak.europaopen.api.models.RuleModel
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -17,5 +18,18 @@ internal interface MeasuresService {
         ) indicators: String
     ): List<DomainDataModel>
 
-    suspend fun fetchDomainIndicatorRules(countryCode: String, rules: String)
+    @GET("api/covid/v1/eutcdata/data/en/{code}/{rules}")
+    suspend fun fetchDomainIndicatorRules(
+        @Path(
+            value = "code",
+            encoded = true
+        )
+        countryCode: String,
+
+        @Path(
+            value = "rules",
+            encoded = true
+        )
+        rules: String
+    ): List<RuleModel>
 }

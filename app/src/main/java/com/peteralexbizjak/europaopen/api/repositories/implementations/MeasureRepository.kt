@@ -2,6 +2,7 @@ package com.peteralexbizjak.europaopen.api.repositories.implementations
 
 import com.peteralexbizjak.europaopen.api.models.DomainDataModel
 import com.peteralexbizjak.europaopen.api.models.DomainModel
+import com.peteralexbizjak.europaopen.api.models.RuleModel
 import com.peteralexbizjak.europaopen.api.repositories.IMeasureRepository
 import com.peteralexbizjak.europaopen.api.services.MeasuresService
 import com.peteralexbizjak.europaopen.utils.exceptions.ApiException
@@ -17,5 +18,13 @@ internal class MeasureRepository(
             throw ApiException("No domain IDs were provided")
         }
         return service.fetchDomainIndicators(domainIDs.joinToString(","))
+    }
+
+    @Throws(ApiException::class)
+    override suspend fun fetchRules(countryCode: String, vararg ruleCodes: Int): List<RuleModel> {
+        if (ruleCodes.isEmpty()) {
+            throw ApiException("No domain IDs were provided")
+        }
+        return service.fetchDomainIndicatorRules(countryCode, ruleCodes.joinToString(","))
     }
 }
