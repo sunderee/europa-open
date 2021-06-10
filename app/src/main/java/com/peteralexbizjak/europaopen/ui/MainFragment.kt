@@ -30,21 +30,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.apply {
-            fragmentMainCountry.visibility = View.GONE
-            fragmentMainCountryAutocomplete.visibility = View.GONE
-            fragmentMainCountryState.visibility = View.GONE
-            fragmentMainDestinationCountry.visibility = View.GONE
-            fragmentMainDestinationCountryAutocomplete.visibility = View.GONE
-            fragmentMainRequestCountryInfo.visibility = View.GONE
-            fragmentMainRequestInfo.visibility = View.GONE
-            fragmentMainSeparator.visibility = View.GONE
-            fragmentMainStartingCountry.visibility = View.GONE
-            fragmentMainStartingCountryAutocomplete.visibility = View.GONE
-            fragmentMainTransitionCountry.visibility = View.GONE
-            fragmentMainTransitionCountryAutocomplete.visibility = View.GONE
-            fragmentMainTripPlanText.visibility = View.GONE
-        }
+        binding.fragmentMainContent.visibility = View.GONE
         countryViewModel.getCountries().observe(viewLifecycleOwner) { it ->
             when (it) {
                 is GenericResponse.Loading -> {
@@ -56,20 +42,7 @@ class MainFragment : Fragment() {
                 is GenericResponse.Success -> {
                     binding.apply {
                         fragmentMainProgressBar.visibility = View.GONE
-
-                        fragmentMainCountry.visibility = View.VISIBLE
-                        fragmentMainCountryAutocomplete.visibility = View.VISIBLE
-                        fragmentMainCountryState.visibility = View.VISIBLE
-                        fragmentMainDestinationCountry.visibility = View.VISIBLE
-                        fragmentMainDestinationCountryAutocomplete.visibility = View.VISIBLE
-                        fragmentMainRequestCountryInfo.visibility = View.VISIBLE
-                        fragmentMainRequestInfo.visibility = View.VISIBLE
-                        fragmentMainSeparator.visibility = View.VISIBLE
-                        fragmentMainStartingCountry.visibility = View.VISIBLE
-                        fragmentMainStartingCountryAutocomplete.visibility = View.VISIBLE
-                        fragmentMainTransitionCountry.visibility = View.VISIBLE
-                        fragmentMainTransitionCountryAutocomplete.visibility = View.VISIBLE
-                        fragmentMainTripPlanText.visibility = View.VISIBLE
+                        fragmentMainContent.visibility = View.VISIBLE
                     }
 
                     binding.fragmentMainStartingCountryAutocomplete.setAdapter(
