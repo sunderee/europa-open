@@ -22,5 +22,8 @@
         <argument
             android:name="country"
             app:argType="string" />
+        <argument
+            android:name="code"
+            app:argType="string" />
     </fragment>
 </navigation>
