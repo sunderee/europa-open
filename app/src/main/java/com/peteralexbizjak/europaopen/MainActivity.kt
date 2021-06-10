@@ -7,6 +7,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.peteralexbizjak.europaopen.databinding.ActivityMainBinding
+import com.peteralexbizjak.europaopen.di.countriesViewModelModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.GlobalContext.startKoin
+import org.koin.core.logger.Level
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +20,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        startKoin {
+            androidLogger(Level.DEBUG)
+            androidContext(this@MainActivity)
+            modules(countriesViewModelModule)
+        }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

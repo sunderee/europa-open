@@ -27,12 +27,8 @@ internal class CountryViewModel(
             try {
                 val isEmpty = databaseRepository.isTableEmpty()
                 if (isEmpty) {
-                    val from = apiRepository.fetchCountries(Direction.FROM)
-                        .map { CountryModel(it.shortName, it.longName, direction = "from") }
-                        .toMutableList()
-                    val to = apiRepository.fetchCountries(Direction.TO)
-                        .map { CountryModel(it.shortName, it.longName, direction = "to") }
-                        .toMutableList()
+                    val from = apiRepository.fetchCountries(Direction.FROM).toMutableList()
+                    val to = apiRepository.fetchCountries(Direction.TO).toMutableList()
 
                     val both = from.intersect(to)
                     both.forEach { bothModel ->
@@ -45,21 +41,21 @@ internal class CountryViewModel(
                             CountryEntity(
                                 countryShortName = it.shortName,
                                 countryLongName = it.longName,
-                                appearsInDirection = it.direction
+                                appearsInDirection = "from"
                             )
                         }.toTypedArray(),
                         *to.map {
                             CountryEntity(
                                 countryShortName = it.shortName,
                                 countryLongName = it.longName,
-                                appearsInDirection = it.direction
+                                appearsInDirection = "to"
                             )
                         }.toTypedArray(),
                         *both.map {
                             CountryEntity(
                                 countryShortName = it.shortName,
                                 countryLongName = it.longName,
-                                appearsInDirection = it.direction
+                                appearsInDirection = "both"
                             )
                         }.toTypedArray()
                     )
