@@ -2,6 +2,7 @@ package com.peteralexbizjak.europaopen.api.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 
 @Serializable
 internal data class CountryModel(
@@ -9,5 +10,8 @@ internal data class CountryModel(
     val shortName: String,
 
     @SerialName("name")
-    val longName: String
+    val longName: String,
+
+    @Transient
+    val direction: String = "both",
 )
