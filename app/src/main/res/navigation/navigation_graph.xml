@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/measuresFragment"
         android:name="com.peteralexbizjak.europaopen.ui.MeasuresFragment"
-        android:label="MeasuresFragment"
+        android:label="{country}"
         tools:layout="@layout/fragment_measures">
         <argument
             android:name="country"
