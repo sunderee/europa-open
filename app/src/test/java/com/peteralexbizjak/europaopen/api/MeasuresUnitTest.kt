@@ -14,7 +14,7 @@ import org.koin.test.inject
 import kotlin.test.assertTrue
 
 internal class MeasuresUnitTest : KoinTest {
-    private val countryModule = module(override = true) {
+    private val measuresModule = module(override = true) {
         single { buildService(buildRetrofit(), MeasuresService::class.java) }
         single<IMeasureRepository> { MeasureRepository(service = get()) }
     }
@@ -23,7 +23,7 @@ internal class MeasuresUnitTest : KoinTest {
     @get:Rule
     val koinTestRule = KoinTestRule.create {
         printLogger()
-        modules(countryModule)
+        modules(measuresModule)
     }
 
     @Test
