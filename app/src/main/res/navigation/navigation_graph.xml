@@ -9,5 +9,18 @@
         android:id="@+id/mainFragment"
         android:name="com.peteralexbizjak.europaopen.ui.MainFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_measuresFragment"
+            app:destination="@id/measuresFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/measuresFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.MeasuresFragment"
+        android:label="MeasuresFragment"
+        tools:layout="@layout/fragment_measures">
+        <argument
+            android:name="country"
+            app:argType="string" />
+    </fragment>
 </navigation>

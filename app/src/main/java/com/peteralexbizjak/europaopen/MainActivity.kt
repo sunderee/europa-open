@@ -9,8 +9,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.peteralexbizjak.europaopen.databinding.ActivityMainBinding
 import com.peteralexbizjak.europaopen.di.countriesViewModelModule
 import com.peteralexbizjak.europaopen.di.measuresViewModelModule
+import com.peteralexbizjak.europaopen.viewmodels.MeasuresViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.GlobalContext.startKoin
 import org.koin.core.logger.Level
 
@@ -18,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    private val measuresViewModel by viewModel<MeasuresViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
