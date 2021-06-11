@@ -8,4 +8,6 @@
     <string name="country_status">Choose a country from the list to obtain detailed measures in place</string>
     <string name="country">Select from the list</string>
     <string name="current_status">Measures In Place</string>
+    <string name="region_statistics">Stats per region:</string>
+    <string name="bullet">•</string>
 </resources>
