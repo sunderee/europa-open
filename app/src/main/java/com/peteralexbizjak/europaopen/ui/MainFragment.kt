@@ -32,7 +32,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.fragmentMainContent.visibility = View.GONE
-        countryViewModel.getCountries().observe(viewLifecycleOwner) { it ->
+        countryViewModel.observeCountries().observe(viewLifecycleOwner) { it ->
             when (it) {
                 is GenericResponse.Loading -> {
                     Snackbar.make(binding.root, "Loading", Snackbar.LENGTH_SHORT).show()

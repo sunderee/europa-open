@@ -13,7 +13,7 @@ internal class MeasureRepository(
     override suspend fun fetchDomains(): List<DomainModel> = service.fetchDomains()
 
     @Throws(ApiException::class)
-    override suspend fun fetchDomainIndicators(vararg domainIDs: Int): List<DomainDataModel> {
+    override suspend fun fetchDomainIndicators(domainIDs: List<Int>): List<DomainDataModel> {
         if (domainIDs.isEmpty()) {
             throw ApiException("No domain IDs were provided")
         }
@@ -21,7 +21,7 @@ internal class MeasureRepository(
     }
 
     @Throws(ApiException::class)
-    override suspend fun fetchRules(countryCode: String, vararg ruleCodes: Int): List<RuleModel> {
+    override suspend fun fetchRules(countryCode: String, ruleCodes: List<Int>): List<RuleModel> {
         if (ruleCodes.isEmpty()) {
             throw ApiException("No domain IDs were provided")
         }

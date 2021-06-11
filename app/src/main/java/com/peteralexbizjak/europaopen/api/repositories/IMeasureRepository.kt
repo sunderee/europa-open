@@ -7,7 +7,7 @@ import com.peteralexbizjak.europaopen.api.models.RuleModel
 internal interface IMeasureRepository {
     suspend fun fetchDomains(): List<DomainModel>
 
-    suspend fun fetchDomainIndicators(vararg domainIDs: Int): List<DomainDataModel>
+    suspend fun fetchDomainIndicators(domainIDs: List<Int>): List<DomainDataModel>
 
-    suspend fun fetchRules(countryCode: String, vararg ruleCodes: Int): List<RuleModel>
+    suspend fun fetchRules(countryCode: String, ruleCodes: List<Int>): List<RuleModel>
 }

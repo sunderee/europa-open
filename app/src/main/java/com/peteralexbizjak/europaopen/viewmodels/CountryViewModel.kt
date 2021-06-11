@@ -19,6 +19,7 @@ internal class CountryViewModel(
     private val databaseRepository: ICountryDBRepository
 ) : ViewModel() {
     private val countriesLiveData by lazy { MutableLiveData<GenericResponse<List<CountryModel>>>() }
+    fun observeCountries(): LiveData<GenericResponse<List<CountryModel>>> = countriesLiveData
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -103,6 +104,4 @@ internal class CountryViewModel(
             }
         }
     }
-
-    fun getCountries(): LiveData<GenericResponse<List<CountryModel>>> = countriesLiveData
 }
