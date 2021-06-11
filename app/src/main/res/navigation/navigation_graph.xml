@@ -25,5 +25,23 @@
         <argument
             android:name="code"
             app:argType="string" />
+        <action
+            android:id="@+id/action_measuresFragment_to_measuresInfoFragment"
+            app:destination="@id/measuresInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/measuresInfoFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.MeasuresInfoFragment"
+        android:label="{country}"
+        tools:layout="@layout/fragment_measures_info">
+        <argument
+            android:name="country"
+            app:argType="string" />
+        <argument
+            android:name="code"
+            app:argType="string" />
+        <argument
+            android:name="domain"
+            app:argType="integer" />
     </fragment>
 </navigation>

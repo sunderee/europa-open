@@ -13,7 +13,6 @@ internal class RegionsAdapter : RecyclerView.Adapter<RegionsAdapter.ViewHolder>(
     internal class ViewHolder(
         private val binding: RegionListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(regionModel: RegionModel) {
             binding.region = regionModel.region
             binding.color = regionModel.color

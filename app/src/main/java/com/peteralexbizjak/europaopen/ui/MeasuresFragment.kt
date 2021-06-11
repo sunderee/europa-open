@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.peteralexbizjak.europaopen.databinding.FragmentMeasuresBinding
@@ -69,6 +70,17 @@ class MeasuresFragment : Fragment() {
                     Snackbar.make(binding.root, it.exception, Snackbar.LENGTH_SHORT).show()
                 }
             }
+        }
+
+        binding.fragmentMeasuresTravelCard.setOnClickListener {
+            binding.root.findNavController()
+                .navigate(
+                    MeasuresFragmentDirections.actionMeasuresFragmentToMeasuresInfoFragment(
+                        country,
+                        countryCode,
+                        7
+                    )
+                )
         }
     }
 
