@@ -24,6 +24,7 @@ class MeasuresFragment : Fragment() {
             country = it.getString("country").toString()
             countryCode = it.getString("code").toString()
         }
+        measuresViewModel.requestRegionsData(countryCode)
     }
 
     override fun onCreateView(
@@ -33,6 +34,11 @@ class MeasuresFragment : Fragment() {
     ): View {
         bindingInstance = FragmentMeasuresBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
     override fun onDestroyView() {
