@@ -10,4 +10,12 @@
     <string name="current_status">Measures In Place</string>
     <string name="region_statistics">Stats per region:</string>
     <string name="bullet">•</string>
+    <string name="travel">Travel</string>
+    <string name="travel_description">Retrieve all relevant information before traveling to the country</string>
+    <string name="corona">Coronavirus Measures</string>
+    <string name="corona_description">What are the state measures when it comes to fighting the Covid pandemic</string>
+    <string name="health">Health Situation</string>
+    <string name="health_description">Current health situation of the local population</string>
+    <string name="info">Other Info</string>
+    <string name="info_description">Miscellaneous information not otherwise captured above</string>
 </resources>
