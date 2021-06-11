@@ -96,7 +96,11 @@ internal class CountryViewModel(
                             })
                     }
                 }
-                countriesLiveData.postValue(GenericResponse.Success(countriesTemporary))
+                countriesLiveData.postValue(
+                    GenericResponse.Success(countriesTemporary
+                        .toSet()
+                        .sortedBy { it.longName })
+                )
             } catch (e: Exception) {
                 val errorMessage = e.localizedMessage ?: "Fatal app error"
                 Log.e(CountryViewModel::class.simpleName, e.toString())
