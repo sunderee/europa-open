@@ -81,9 +81,12 @@ class MainFragment : Fragment() {
                             requireContext(),
                             R.layout.list_item,
                             it.data
+                                .asSequence()
                                 .filter { model -> model.direction == "both" }
                                 .sortedBy { item -> item.shortName }
                                 .map { item -> item.longName }
+                                .toSet()
+                                .toList()
                         )
                     )
 
