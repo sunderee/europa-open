@@ -16,9 +16,22 @@ internal class MeasuresViewModel(
     private val regionRepository: IRegionRepository
 ) : ViewModel() {
 
-    data class Rule(val title: String, val comment: String)
-    data class Indicator(val title: String, val rules: List<Rule>)
-    data class Domain(val title: String, val indicators: List<Indicator>)
+    data class Rule(
+        val title: String,
+        val comment: String
+    )
+
+    data class Indicator(
+        val domainID: Int,
+        val title: String,
+        val comment: String? = null,
+        val rules: List<Rule> = emptyList()
+    )
+
+    data class Domain(
+        val title: String,
+        val indicators: List<Indicator>
+    )
 
     private val regionData by lazy { MutableLiveData<GenericResponse<List<RegionModel>>>() }
     fun observeRegionData(): LiveData<GenericResponse<List<RegionModel>>> = regionData
@@ -30,28 +43,33 @@ internal class MeasuresViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             domainData.postValue(GenericResponse.Loading)
             val domains = measureRepository.fetchDomains()
-            val indicators = measureRepository.fetchDomainIndicators(domains.map { it.id })
-
-            val allRules = measureRepository
-                .fetchRules(
-                    countryCode,
-                    indicators.flatMap { it.indicators.flatMap { indicator -> indicator.rules } })
-                .flatMap { it.data }
-
-            val domainIndicatorRules = domains.map { model ->
+            val indicators = measureRepository
+                .fetchDomainIndicators(domains.map { it.id })
+                .flatMap { it.indicators }
+                .map { indicator ->
+                    val indicatorID = indicator.id
+                    val rules = measureRepository.fetchRules(
+                        countryCode,
+                        listOf(indicatorID, *indicator.rules.toTypedArray())
+                    ).flatMap { it.data }
+                    Indicator(
+                        rules
+                            .find { it.id == indicatorID }
+                            ?.domainID ?: -1,
+                        indicator.name,
+                        rules
+                            .find { it.id == indicatorID }
+                            ?.restrictions ?: "No data",
+                        rules
+                            .filter { indicator.rules.contains(it.id) }
+                            .map { Rule(it.indicator, it.restrictions) }
+                    )
+                }
+            val domainIndicatorRules = domains.map { domain ->
                 Domain(
-                    model.name,
-                    indicators.flatMap { domain ->
-                        domain.indicators
-                            .map { indicator ->
-                                Indicator(
-                                    indicator.name,
-                                    indicator.rules.map { rule ->
-                                        val tmpRule = allRules.first { it.id == rule }
-                                        Rule(tmpRule.indicator, tmpRule.restrictions)
-                                    })
-                            }
-                    })
+                    domain.name,
+                    indicators.filter { it.domainID == domain.id }
+                )
             }
             domainData.postValue(
                 if (domainIndicatorRules.isNotEmpty()) GenericResponse.Success(domainIndicatorRules)

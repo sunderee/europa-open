@@ -20,6 +20,7 @@ class MeasuresViewModelUnitTest : KoinTest {
     )
 
     private data class Indicator(
+        val domainID: Int,
         val title: String,
         val comment: String? = null,
         val rules: List<Rule> = emptyList()
@@ -52,37 +53,31 @@ class MeasuresViewModelUnitTest : KoinTest {
             val indicators = repository
                 .fetchDomainIndicators(domains.map { it.id })
                 .flatMap { it.indicators }
-            println("Indicators: ${indicators.joinToString(", ") { it.id.toString() }}")
-            val allRules = repository.fetchRules(
-                countryCode,
-                indicators.flatMap { it.rules }
-            ).flatMap { it.data }
-            println("Rules: ${allRules.joinToString(", ") { it.id.toString() }}")
-
-            val domainData = domains.map {
+                .map { indicator ->
+                    val indicatorID = indicator.id
+                    val rules = repository.fetchRules(
+                        countryCode,
+                        listOf(indicatorID, *indicator.rules.toTypedArray())
+                    ).flatMap { it.data }
+                    Indicator(
+                        rules
+                            .find { it.id == indicatorID }
+                            ?.domainID ?: -1,
+                        indicator.name,
+                        rules
+                            .find { it.id == indicatorID }
+                            ?.restrictions ?: "No data",
+                        rules
+                            .filter { indicator.rules.contains(it.id) }
+                            .map { Rule(it.indicator, it.restrictions) }
+                    )
+                }
+            domains.map { domain ->
                 Domain(
-                    it.name,
-                    indicators
-                        .filter { indicator -> indicator.domainID == it.id }
-                        .map { indicator ->
-                            Indicator(
-                                indicator.name,
-                                indicator.contents,
-                                allRules
-                                    .filter { rule ->
-                                        indicator.rules.contains(rule.id)
-                                    }
-                                    .map { rule ->
-                                        Rule(
-                                            rule.indicator,
-                                            rule.restrictions
-                                        )
-                                    }
-                            )
-                        }
+                    domain.name,
+                    indicators.filter { it.domainID == domain.id }
                 )
             }
-            domainData
         }
         println("Domains: $data")
         assertTrue(data.isNotEmpty())

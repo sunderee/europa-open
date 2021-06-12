@@ -5,6 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class IndicatorModel(
+    @SerialName("domain_id")
+    val domainID: Int,
+
     @SerialName("indicator_id")
     val id: Int,
 
