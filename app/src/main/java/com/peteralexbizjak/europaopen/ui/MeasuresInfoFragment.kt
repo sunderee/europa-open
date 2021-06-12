@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.peteralexbizjak.europaopen.databinding.FragmentMeasuresInfoBinding
+import com.peteralexbizjak.europaopen.ui.adapters.DomainAdapter
 import com.peteralexbizjak.europaopen.viewmodels.MeasuresViewModel
 import com.peteralexbizjak.europaopen.viewmodels.models.GenericResponse
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -20,6 +23,8 @@ class MeasuresInfoFragment : Fragment() {
     private lateinit var country: String
     private lateinit var countryCode: String
     private var domainCode by Delegates.notNull<Int>()
+
+    private val recyclerViewAdapter = DomainAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,9 +47,26 @@ class MeasuresInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.fragmentMeasuresInfoRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = recyclerViewAdapter
+        }
         measuresViewModel.observeDomainData().observe(viewLifecycleOwner) {
-            if (it is GenericResponse.Success) {
-                val data = it.data.filter { it.title == DOMAIN_DATA[domainCode] }
+            when (it) {
+                is GenericResponse.Success -> {
+                    binding.fragmentMeasuresInfoProgressBar.visibility = View.GONE
+                    recyclerViewAdapter.setNewData(
+                        it.data
+                            .filter { domain -> domain.title == DOMAIN_DATA[domainCode] }
+                            .flatMap { domain -> domain.indicators }
+                    )
+                }
+                is GenericResponse.Loading -> {
+                    Snackbar.make(binding.root, "Loading", Snackbar.LENGTH_SHORT).show()
+                }
+                is GenericResponse.Error -> {
+                    Snackbar.make(binding.root, it.exception, Snackbar.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -55,7 +77,7 @@ class MeasuresInfoFragment : Fragment() {
     }
 
     companion object {
-        private val DOMAIN_DATA = mapOf(
+        val DOMAIN_DATA = mapOf(
             7 to "Travel",
             6 to "Coronavirus Measures",
             5 to "Health Situation",

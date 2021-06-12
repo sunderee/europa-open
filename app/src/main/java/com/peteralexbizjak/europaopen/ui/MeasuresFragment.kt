@@ -72,15 +72,51 @@ class MeasuresFragment : Fragment() {
             }
         }
 
-        binding.fragmentMeasuresTravelCard.setOnClickListener {
-            binding.root.findNavController()
-                .navigate(
-                    MeasuresFragmentDirections.actionMeasuresFragmentToMeasuresInfoFragment(
-                        country,
-                        countryCode,
-                        7
+        binding.apply {
+            fragmentMeasuresTravelCard.setOnClickListener {
+                binding.root.findNavController()
+                    .navigate(
+                        MeasuresFragmentDirections.actionMeasuresFragmentToMeasuresInfoFragment(
+                            country,
+                            countryCode,
+                            7,
+                            MeasuresInfoFragment.DOMAIN_DATA[7] ?: ""
+                        )
                     )
-                )
+            }
+            fragmentMeasuresCovidCard.setOnClickListener {
+                binding.root.findNavController()
+                    .navigate(
+                        MeasuresFragmentDirections.actionMeasuresFragmentToMeasuresInfoFragment(
+                            country,
+                            countryCode,
+                            6,
+                            MeasuresInfoFragment.DOMAIN_DATA[6] ?: ""
+                        )
+                    )
+            }
+            fragmentMeasuresHealthCard.setOnClickListener {
+                binding.root.findNavController()
+                    .navigate(
+                        MeasuresFragmentDirections.actionMeasuresFragmentToMeasuresInfoFragment(
+                            country,
+                            countryCode,
+                            5,
+                            MeasuresInfoFragment.DOMAIN_DATA[5] ?: ""
+                        )
+                    )
+            }
+            fragmentMeasuresOtherCard.setOnClickListener {
+                binding.root.findNavController()
+                    .navigate(
+                        MeasuresFragmentDirections.actionMeasuresFragmentToMeasuresInfoFragment(
+                            country,
+                            countryCode,
+                            8,
+                            MeasuresInfoFragment.DOMAIN_DATA[8] ?: ""
+                        )
+                    )
+            }
         }
     }
 

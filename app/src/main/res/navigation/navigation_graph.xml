@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/measuresInfoFragment"
         android:name="com.peteralexbizjak.europaopen.ui.MeasuresInfoFragment"
-        android:label="{country}"
+        android:label="{domainName}"
         tools:layout="@layout/fragment_measures_info">
         <argument
             android:name="country"
@@ -43,5 +43,8 @@
         <argument
             android:name="domain"
             app:argType="integer" />
+        <argument
+            android:name="domainName"
+            app:argType="string" />
     </fragment>
 </navigation>

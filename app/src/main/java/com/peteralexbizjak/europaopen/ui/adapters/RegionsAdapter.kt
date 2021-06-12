@@ -26,9 +26,8 @@ internal class RegionsAdapter : RecyclerView.Adapter<RegionsAdapter.ViewHolder>(
         return ViewHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(regionData[position])
-    }
 
     override fun getItemCount(): Int = regionData.size
 

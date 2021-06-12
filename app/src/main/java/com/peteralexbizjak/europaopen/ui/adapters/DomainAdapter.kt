@@ -1,32 +1,35 @@
 package com.peteralexbizjak.europaopen.ui.adapters
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.peteralexbizjak.europaopen.databinding.DomainListItemBinding
 import com.peteralexbizjak.europaopen.viewmodels.MeasuresViewModel
 
 internal class DomainAdapter : RecyclerView.Adapter<DomainAdapter.ViewHolder>() {
-    private val domainData = mutableListOf<MeasuresViewModel.Domain>()
+    private val domainData = mutableListOf<MeasuresViewModel.Indicator>()
 
     internal class ViewHolder(
         private val binding: DomainListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(domainModel: MeasuresViewModel.Domain) {}
+        fun bind(domainModel: MeasuresViewModel.Indicator) {
+            binding.title = domainModel.title
+            binding.executePendingBindings()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val itemBinding = DomainListItemBinding.inflate(layoutInflater, parent, false)
+        return ViewHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
-    }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
+        holder.bind(domainData[position])
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = domainData.size
 
-    fun setNewData(newData: List<MeasuresViewModel.Domain>) {
+    fun setNewData(newData: List<MeasuresViewModel.Indicator>) {
         notifyDataSetChanged()
         domainData.apply {
             clear()
