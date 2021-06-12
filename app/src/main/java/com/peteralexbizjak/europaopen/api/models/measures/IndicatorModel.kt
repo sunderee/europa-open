@@ -1,4 +1,4 @@
-package com.peteralexbizjak.europaopen.api.models
+package com.peteralexbizjak.europaopen.api.models.measures
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Europa Open</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.</string>
+
     <string name="trip_plan">Plan your trip abroad by selecting the starting and destination country, retrieving all relevant info you need before leaving your home.</string>
     <string name="starting_country">Starting country</string>
     <string name="destination_country">Destination country</string>

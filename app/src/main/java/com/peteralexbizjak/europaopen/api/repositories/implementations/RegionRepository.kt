@@ -1,6 +1,6 @@
 package com.peteralexbizjak.europaopen.api.repositories.implementations
 
-import com.peteralexbizjak.europaopen.api.models.RegionModel
+import com.peteralexbizjak.europaopen.api.models.region.RegionModel
 import com.peteralexbizjak.europaopen.api.repositories.IRegionRepository
 import com.peteralexbizjak.europaopen.api.services.RegionService
 

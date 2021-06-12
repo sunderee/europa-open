@@ -3,7 +3,7 @@ package com.peteralexbizjak.europaopen.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.peteralexbizjak.europaopen.api.models.RegionModel
+import com.peteralexbizjak.europaopen.api.models.region.RegionModel
 import com.peteralexbizjak.europaopen.databinding.RegionListItemBinding
 
 
