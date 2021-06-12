@@ -1,10 +1,13 @@
-package com.peteralexbizjak.europaopen.api.models
+package com.peteralexbizjak.europaopen.api.models.measures
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class IndicatorModel(
+    @SerialName("domain_id")
+    val domainID: Int,
+
     @SerialName("indicator_id")
     val id: Int,
 

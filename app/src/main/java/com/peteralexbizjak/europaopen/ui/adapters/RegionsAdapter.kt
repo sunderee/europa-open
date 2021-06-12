@@ -3,7 +3,7 @@ package com.peteralexbizjak.europaopen.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.peteralexbizjak.europaopen.api.models.RegionModel
+import com.peteralexbizjak.europaopen.api.models.region.RegionModel
 import com.peteralexbizjak.europaopen.databinding.RegionListItemBinding
 
 
@@ -13,7 +13,6 @@ internal class RegionsAdapter : RecyclerView.Adapter<RegionsAdapter.ViewHolder>(
     internal class ViewHolder(
         private val binding: RegionListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(regionModel: RegionModel) {
             binding.region = regionModel.region
             binding.color = regionModel.color
@@ -27,9 +26,8 @@ internal class RegionsAdapter : RecyclerView.Adapter<RegionsAdapter.ViewHolder>(
         return ViewHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(regionData[position])
-    }
 
     override fun getItemCount(): Int = regionData.size
 

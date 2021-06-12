@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.peteralexbizjak.europaopen.databinding.FragmentMeasuresBinding
@@ -68,6 +69,53 @@ class MeasuresFragment : Fragment() {
                 is GenericResponse.Error -> {
                     Snackbar.make(binding.root, it.exception, Snackbar.LENGTH_SHORT).show()
                 }
+            }
+        }
+
+        binding.apply {
+            fragmentMeasuresTravelCard.setOnClickListener {
+                binding.root.findNavController()
+                    .navigate(
+                        MeasuresFragmentDirections.actionMeasuresFragmentToMeasuresInfoFragment(
+                            country,
+                            countryCode,
+                            7,
+                            MeasuresInfoFragment.DOMAIN_DATA[7] ?: ""
+                        )
+                    )
+            }
+            fragmentMeasuresCovidCard.setOnClickListener {
+                binding.root.findNavController()
+                    .navigate(
+                        MeasuresFragmentDirections.actionMeasuresFragmentToMeasuresInfoFragment(
+                            country,
+                            countryCode,
+                            6,
+                            MeasuresInfoFragment.DOMAIN_DATA[6] ?: ""
+                        )
+                    )
+            }
+            fragmentMeasuresHealthCard.setOnClickListener {
+                binding.root.findNavController()
+                    .navigate(
+                        MeasuresFragmentDirections.actionMeasuresFragmentToMeasuresInfoFragment(
+                            country,
+                            countryCode,
+                            5,
+                            MeasuresInfoFragment.DOMAIN_DATA[5] ?: ""
+                        )
+                    )
+            }
+            fragmentMeasuresOtherCard.setOnClickListener {
+                binding.root.findNavController()
+                    .navigate(
+                        MeasuresFragmentDirections.actionMeasuresFragmentToMeasuresInfoFragment(
+                            country,
+                            countryCode,
+                            8,
+                            MeasuresInfoFragment.DOMAIN_DATA[8] ?: ""
+                        )
+                    )
             }
         }
     }

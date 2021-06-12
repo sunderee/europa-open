@@ -1,8 +1,8 @@
 package com.peteralexbizjak.europaopen.api.repositories.implementations
 
-import com.peteralexbizjak.europaopen.api.models.DomainDataModel
-import com.peteralexbizjak.europaopen.api.models.DomainModel
-import com.peteralexbizjak.europaopen.api.models.RuleModel
+import com.peteralexbizjak.europaopen.api.models.measures.DomainDataModel
+import com.peteralexbizjak.europaopen.api.models.measures.DomainModel
+import com.peteralexbizjak.europaopen.api.models.measures.RuleModel
 import com.peteralexbizjak.europaopen.api.repositories.IMeasureRepository
 import com.peteralexbizjak.europaopen.api.services.MeasuresService
 import com.peteralexbizjak.europaopen.utils.exceptions.ApiException

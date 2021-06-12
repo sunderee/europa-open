@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.peteralexbizjak.europaopen.api.models.CountryModel
+import com.peteralexbizjak.europaopen.api.models.country.CountryModel
 import com.peteralexbizjak.europaopen.api.repositories.ICountryRepository
 import com.peteralexbizjak.europaopen.db.entities.CountryEntity
 import com.peteralexbizjak.europaopen.db.repositories.ICountryDBRepository

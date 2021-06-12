@@ -1,6 +1,6 @@
 package com.peteralexbizjak.europaopen.api.services
 
-import com.peteralexbizjak.europaopen.api.models.CountryModel
+import com.peteralexbizjak.europaopen.api.models.country.CountryModel
 import retrofit2.http.GET
 
 internal interface CountryService {

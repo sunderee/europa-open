@@ -5,7 +5,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.peteralexbizjak.europaopen.api.buildRetrofit
 import com.peteralexbizjak.europaopen.api.buildService
-import com.peteralexbizjak.europaopen.api.models.CountryModel
+import com.peteralexbizjak.europaopen.api.models.country.CountryModel
 import com.peteralexbizjak.europaopen.api.repositories.ICountryRepository
 import com.peteralexbizjak.europaopen.api.repositories.implementations.CountryRepository
 import com.peteralexbizjak.europaopen.api.services.CountryService

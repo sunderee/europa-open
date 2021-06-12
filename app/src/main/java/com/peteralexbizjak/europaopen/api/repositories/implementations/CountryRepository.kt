@@ -1,6 +1,6 @@
 package com.peteralexbizjak.europaopen.api.repositories.implementations
 
-import com.peteralexbizjak.europaopen.api.models.CountryModel
+import com.peteralexbizjak.europaopen.api.models.country.CountryModel
 import com.peteralexbizjak.europaopen.api.repositories.ICountryRepository
 import com.peteralexbizjak.europaopen.api.services.CountryService
 import com.peteralexbizjak.europaopen.utils.constants.Direction

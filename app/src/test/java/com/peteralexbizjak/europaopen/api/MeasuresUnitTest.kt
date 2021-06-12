@@ -35,11 +35,20 @@ internal class MeasuresUnitTest : KoinTest {
 
     @Test
     fun testFetchingDomainIndicators() {
-        val indicators = runBlocking { repository.fetchDomainIndicators(7, 6, 5, 8) }
+        val indicators = runBlocking { repository.fetchDomainIndicators(listOf(7, 6, 5, 8)) }
         indicators.forEach {
             println("Domain: ${it.id}")
             println(it.indicators.joinToString("\n") { id -> id.name })
         }
         assertTrue(indicators.isNotEmpty())
+    }
+
+    @Test
+    fun testFetchingRules() {
+        val rules = runBlocking { repository.fetchRules("SVN", listOf(7010, 2002)) }
+        rules.forEach {
+            println("Rules:\n${it.data.joinToString("\n") { it.indicator }}")
+        }
+        assertEquals(2, rules[0].data.size)
     }
 }

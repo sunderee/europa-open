@@ -1,6 +1,6 @@
 package com.peteralexbizjak.europaopen.api.services
 
-import com.peteralexbizjak.europaopen.api.models.RegionModel
+import com.peteralexbizjak.europaopen.api.models.region.RegionModel
 import retrofit2.http.GET
 
 internal interface RegionService {
