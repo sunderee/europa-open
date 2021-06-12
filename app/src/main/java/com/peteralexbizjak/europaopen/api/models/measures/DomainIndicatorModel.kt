@@ -11,6 +11,9 @@ internal data class DomainIndicatorModel(
     @SerialName("indicator_name")
     val name: String,
 
+    @SerialName("comment")
+    val contents: String? = null,
+
     @SerialName("rules")
     val rules: List<Int>
 )
