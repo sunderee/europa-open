@@ -17,8 +17,8 @@ import com.peteralexbizjak.europaopen.db.AppDatabase
 import com.peteralexbizjak.europaopen.db.daos.CountryDao
 import com.peteralexbizjak.europaopen.db.repositories.ICountryDBRepository
 import com.peteralexbizjak.europaopen.db.repositories.implementations.CountryDBRepository
-import com.peteralexbizjak.europaopen.viewmodels.CountryViewModel
-import com.peteralexbizjak.europaopen.viewmodels.MeasuresViewModel
+import com.peteralexbizjak.europaopen.ui.viewmodels.CountryViewModel
+import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

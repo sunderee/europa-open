@@ -10,8 +10,8 @@ import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.peteralexbizjak.europaopen.R
 import com.peteralexbizjak.europaopen.databinding.FragmentMainBinding
-import com.peteralexbizjak.europaopen.viewmodels.CountryViewModel
-import com.peteralexbizjak.europaopen.viewmodels.models.GenericResponse
+import com.peteralexbizjak.europaopen.ui.viewmodels.CountryViewModel
+import com.peteralexbizjak.europaopen.ui.viewmodels.models.GenericResponse
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {

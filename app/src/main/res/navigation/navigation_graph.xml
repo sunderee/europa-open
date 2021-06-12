@@ -46,5 +46,17 @@
         <argument
             android:name="domainName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_measuresInfoFragment_to_ruleFragment"
+            app:destination="@id/ruleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ruleFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.RuleFragment"
+        android:label="RuleFragment"
+        tools:layout="@layout/fragment_rule">
+        <argument
+            android:name="data"
+            app:argType="com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel$Indicator" />
     </fragment>
 </navigation>

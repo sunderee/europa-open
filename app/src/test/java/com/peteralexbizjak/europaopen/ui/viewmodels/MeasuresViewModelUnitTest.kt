@@ -1,4 +1,4 @@
-package com.peteralexbizjak.europaopen.viewmodels
+package com.peteralexbizjak.europaopen.ui.viewmodels
 
 import com.peteralexbizjak.europaopen.api.buildRetrofit
 import com.peteralexbizjak.europaopen.api.buildService

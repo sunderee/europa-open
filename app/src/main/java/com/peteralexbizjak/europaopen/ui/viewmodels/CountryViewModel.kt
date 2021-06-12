@@ -1,4 +1,4 @@
-package com.peteralexbizjak.europaopen.viewmodels
+package com.peteralexbizjak.europaopen.ui.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,7 +10,7 @@ import com.peteralexbizjak.europaopen.api.repositories.ICountryRepository
 import com.peteralexbizjak.europaopen.db.entities.CountryEntity
 import com.peteralexbizjak.europaopen.db.repositories.ICountryDBRepository
 import com.peteralexbizjak.europaopen.utils.constants.Direction
-import com.peteralexbizjak.europaopen.viewmodels.models.GenericResponse
+import com.peteralexbizjak.europaopen.ui.viewmodels.models.GenericResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.peteralexbizjak.europaopen.databinding.FragmentMeasuresInfoBinding
 import com.peteralexbizjak.europaopen.ui.adapters.DomainAdapter
-import com.peteralexbizjak.europaopen.viewmodels.MeasuresViewModel
-import com.peteralexbizjak.europaopen.viewmodels.models.GenericResponse
+import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
+import com.peteralexbizjak.europaopen.ui.viewmodels.models.GenericResponse
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import kotlin.properties.Delegates
 

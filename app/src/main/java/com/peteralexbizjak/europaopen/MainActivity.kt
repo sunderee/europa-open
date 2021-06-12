@@ -9,7 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.peteralexbizjak.europaopen.databinding.ActivityMainBinding
 import com.peteralexbizjak.europaopen.di.countriesViewModelModule
 import com.peteralexbizjak.europaopen.di.measuresViewModelModule
-import com.peteralexbizjak.europaopen.viewmodels.MeasuresViewModel
+import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -1,4 +1,4 @@
-package com.peteralexbizjak.europaopen.viewmodels.models
+package com.peteralexbizjak.europaopen.ui.viewmodels.models
 
 internal sealed class GenericResponse<out R> {
     data class Success<out T>(val data: T) : GenericResponse<T>()

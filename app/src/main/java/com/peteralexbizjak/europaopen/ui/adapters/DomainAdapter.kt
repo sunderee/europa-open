@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.peteralexbizjak.europaopen.databinding.DomainListItemBinding
-import com.peteralexbizjak.europaopen.viewmodels.MeasuresViewModel
+import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
 
 internal class DomainAdapter : RecyclerView.Adapter<DomainAdapter.ViewHolder>() {
     private val domainData = mutableListOf<MeasuresViewModel.Indicator>()
