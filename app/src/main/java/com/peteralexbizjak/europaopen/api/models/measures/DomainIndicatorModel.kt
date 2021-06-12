@@ -8,6 +8,9 @@ internal data class DomainIndicatorModel(
     @SerialName("indicator_id")
     val id: Int,
 
+    @SerialName("domain_id")
+    val domainID: Int? = null,
+
     @SerialName("indicator_name")
     val name: String,
 
