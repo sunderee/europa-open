@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_measuresFragment"
             app:destination="@id/measuresFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_travelFragment"
+            app:destination="@id/travelFragment" />
     </fragment>
     <fragment
         android:id="@+id/measuresFragment"
@@ -74,5 +77,28 @@
         <argument
             android:name="contents"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/travelFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.TravelFragment"
+        android:label="Travel info"
+        tools:layout="@layout/fragment_travel">
+        <action
+            android:id="@+id/action_travelFragment_to_travelInfoFragment"
+            app:destination="@id/travelInfoFragment" />
+        <argument
+            android:name="destination"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/travelInfoFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.TravelInfoFragment"
+        android:label="TravelInfoFragment"
+        tools:layout="@layout/fragment_travel_info">
+        <argument
+            android:name="travelInfo"
+            android:defaultValue="@null"
+            app:argType="com.peteralexbizjak.europaopen.api.models.measures.IndicatorModel"
+            app:nullable="true" />
     </fragment>
 </navigation>

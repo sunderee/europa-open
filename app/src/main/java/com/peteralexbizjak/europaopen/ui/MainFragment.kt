@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.peteralexbizjak.europaopen.R
+import com.peteralexbizjak.europaopen.api.models.country.CountryModel
 import com.peteralexbizjak.europaopen.databinding.FragmentMainBinding
 import com.peteralexbizjak.europaopen.ui.viewmodels.CountryViewModel
 import com.peteralexbizjak.europaopen.ui.viewmodels.models.GenericResponse
@@ -16,6 +17,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
     private val countryViewModel by viewModel<CountryViewModel>()
+
+    private var countries = mutableListOf<CountryModel>()
 
     private var bindingInstance: FragmentMainBinding? = null
     private val binding get() = bindingInstance!!
@@ -45,6 +48,7 @@ class MainFragment : Fragment() {
                         fragmentMainProgressBar.visibility = View.GONE
                         fragmentMainContent.visibility = View.VISIBLE
                     }
+                    countries.addAll(it.data)
 
                     binding.fragmentMainStartingCountryAutocomplete.setAdapter(
                         ArrayAdapter(
@@ -83,6 +87,27 @@ class MainFragment : Fragment() {
                                 .map { item -> item.longName }
                         )
                     )
+
+                    binding.fragmentMainRequestInfo.setOnClickListener {
+                        val startCode = countries.find {
+                            it.longName == binding.fragmentMainStartingCountryAutocomplete.text.toString()
+                        }?.shortName
+                        val destinationCode = countries.find {
+                            it.longName == binding.fragmentMainDestinationCountryAutocomplete.text.toString()
+                        }?.shortName
+                        val transitCode = countries.find {
+                            it.longName == binding.fragmentMainTransitionCountryAutocomplete.text.toString()
+                        }?.shortName
+                        binding.root
+                            .findNavController()
+                            .navigate(
+                                MainFragmentDirections.actionMainFragmentToTravelFragment(
+                                    if (transitCode != null) "$startCode/$destinationCode/$transitCode"
+                                    else "$startCode/$destinationCode"
+                                )
+                            )
+
+                    }
 
                     binding.fragmentMainRequestCountryInfo.setOnClickListener { _ ->
                         val country = binding.fragmentMainCountryAutocomplete.text.toString()
