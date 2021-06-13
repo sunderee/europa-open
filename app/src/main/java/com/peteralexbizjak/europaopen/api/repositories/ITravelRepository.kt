@@ -1,6 +1,6 @@
 package com.peteralexbizjak.europaopen.api.repositories
 
-import com.peteralexbizjak.europaopen.api.models.region.TravelModel
+import com.peteralexbizjak.europaopen.api.models.travel.TravelModel
 
 interface ITravelRepository {
     suspend fun fetchTravelInfo(

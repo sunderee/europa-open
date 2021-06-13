@@ -1,6 +1,6 @@
 package com.peteralexbizjak.europaopen.api.repositories.implementations
 
-import com.peteralexbizjak.europaopen.api.models.region.TravelModel
+import com.peteralexbizjak.europaopen.api.models.travel.TravelModel
 import com.peteralexbizjak.europaopen.api.repositories.ITravelRepository
 import com.peteralexbizjak.europaopen.api.services.TravelService
 import com.peteralexbizjak.europaopen.utils.exceptions.ApiException

@@ -1,6 +1,6 @@
 package com.peteralexbizjak.europaopen.api.services
 
-import com.peteralexbizjak.europaopen.api.models.region.TravelModel
+import com.peteralexbizjak.europaopen.api.models.travel.TravelModel
 import retrofit2.http.GET
 import retrofit2.http.Path
 

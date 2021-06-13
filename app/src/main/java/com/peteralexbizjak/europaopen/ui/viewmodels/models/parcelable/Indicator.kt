@@ -1,7 +1,6 @@
 package com.peteralexbizjak.europaopen.ui.viewmodels.models.parcelable
 
 import android.os.Parcelable
-import com.peteralexbizjak.europaopen.ui.viewmodels.models.parcelable.Rule
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

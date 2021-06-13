@@ -1,4 +1,4 @@
-package com.peteralexbizjak.europaopen.api.models.region
+package com.peteralexbizjak.europaopen.api.models.travel
 
 import com.peteralexbizjak.europaopen.api.models.measures.IndicatorModel
 import kotlinx.serialization.SerialName
