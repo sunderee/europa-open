@@ -26,4 +26,6 @@
     <string name="health_description">Current health situation of the local population</string>
     <string name="info">Other Info</string>
     <string name="info_description">Miscellaneous information not otherwise captured above</string>
+    <string name="more_info">Click for more info</string>
+    <string name="travel_info_for">Travel info for:</string>
 </resources>
