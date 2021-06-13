@@ -49,14 +49,30 @@
         <action
             android:id="@+id/action_measuresInfoFragment_to_ruleFragment"
             app:destination="@id/ruleFragment" />
+        <action
+            android:id="@+id/action_measuresInfoFragment_to_ruleSingleFragment"
+            app:destination="@id/ruleSingleFragment" />
     </fragment>
     <fragment
         android:id="@+id/ruleFragment"
         android:name="com.peteralexbizjak.europaopen.ui.RuleFragment"
-        android:label="RuleFragment"
-        tools:layout="@layout/fragment_rule">
+        android:label="Info">
         <argument
-            android:name="data"
-            app:argType="com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel$Indicator" />
+            android:name="rules"
+            android:defaultValue="@null"
+            app:argType="com.peteralexbizjak.europaopen.ui.viewmodels.models.parcelable.Rule[]"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/ruleSingleFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.RuleSingleFragment"
+        android:label="Info"
+        tools:layout="@layout/fragment_rule_single">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="contents"
+            app:argType="string" />
     </fragment>
 </navigation>

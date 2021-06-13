@@ -2,18 +2,36 @@ package com.peteralexbizjak.europaopen.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.peteralexbizjak.europaopen.databinding.DomainListItemBinding
-import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
+import com.peteralexbizjak.europaopen.ui.MeasuresInfoFragmentDirections
+import com.peteralexbizjak.europaopen.ui.viewmodels.models.parcelable.Indicator
 
 internal class DomainAdapter : RecyclerView.Adapter<DomainAdapter.ViewHolder>() {
-    private val domainData = mutableListOf<MeasuresViewModel.Indicator>()
+    private val domainData = mutableListOf<Indicator>()
 
     internal class ViewHolder(
         private val binding: DomainListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(domainModel: MeasuresViewModel.Indicator) {
+        fun bind(domainModel: Indicator) {
             binding.title = domainModel.title
+            binding.root.setOnClickListener {
+                if (domainModel.rules.isEmpty()) {
+                    it.findNavController().navigate(
+                        MeasuresInfoFragmentDirections.actionMeasuresInfoFragmentToRuleSingleFragment(
+                            domainModel.title,
+                            domainModel.comment ?: ""
+                        )
+                    )
+                } else {
+                    it.findNavController().navigate(
+                        MeasuresInfoFragmentDirections.actionMeasuresInfoFragmentToRuleFragment(
+                            domainModel.rules.toTypedArray()
+                        )
+                    )
+                }
+            }
             binding.executePendingBindings()
         }
     }
@@ -29,7 +47,7 @@ internal class DomainAdapter : RecyclerView.Adapter<DomainAdapter.ViewHolder>() 
 
     override fun getItemCount(): Int = domainData.size
 
-    fun setNewData(newData: List<MeasuresViewModel.Indicator>) {
+    fun setNewData(newData: List<Indicator>) {
         notifyDataSetChanged()
         domainData.apply {
             clear()

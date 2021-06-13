@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class RuleModel(
+data class RuleModel(
     @SerialName("nutscode")
     val countryCode: String,
 
