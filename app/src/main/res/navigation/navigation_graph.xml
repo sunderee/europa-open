@@ -58,8 +58,10 @@
         android:name="com.peteralexbizjak.europaopen.ui.RuleFragment"
         android:label="Info">
         <argument
-            android:name="data"
-            app:argType="com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel$Rule[]" />
+            android:name="rules"
+            android:defaultValue="@null"
+            app:argType="com.peteralexbizjak.europaopen.ui.viewmodels.models.parcelable.Rule[]"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/ruleSingleFragment"

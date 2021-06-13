@@ -1,6 +1,7 @@
 package com.peteralexbizjak.europaopen.ui
 
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,6 @@ import com.peteralexbizjak.europaopen.databinding.FragmentRuleSingleBinding
 class RuleSingleFragment : Fragment() {
     private var bindingInstance: FragmentRuleSingleBinding? = null
     private val binding get() = bindingInstance!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +23,13 @@ class RuleSingleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.let {
+            binding.title = it.getString("title").toString()
+            binding.contents = Html.fromHtml(
+                it.getString("contents").toString(),
+                Html.FROM_HTML_MODE_LEGACY
+            ).toString()
+        }
     }
 
     override fun onDestroyView() {

@@ -1,6 +1,5 @@
 package com.peteralexbizjak.europaopen.ui.viewmodels
 
-import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,34 +8,16 @@ import com.peteralexbizjak.europaopen.api.models.region.RegionModel
 import com.peteralexbizjak.europaopen.api.repositories.IMeasureRepository
 import com.peteralexbizjak.europaopen.api.repositories.IRegionRepository
 import com.peteralexbizjak.europaopen.ui.viewmodels.models.GenericResponse
+import com.peteralexbizjak.europaopen.ui.viewmodels.models.parcelable.Domain
+import com.peteralexbizjak.europaopen.ui.viewmodels.models.parcelable.Indicator
+import com.peteralexbizjak.europaopen.ui.viewmodels.models.parcelable.Rule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.parcelize.Parcelize
 
 class MeasuresViewModel(
     private val measureRepository: IMeasureRepository,
     private val regionRepository: IRegionRepository
 ) : ViewModel() {
-
-    @Parcelize
-    data class Rule(
-        val title: String,
-        val comment: String
-    ) : Parcelable
-
-    @Parcelize
-    data class Indicator(
-        val domainID: Int,
-        val title: String,
-        val comment: String? = null,
-        val rules: List<Rule> = emptyList()
-    ) : Parcelable
-
-    @Parcelize
-    data class Domain(
-        val title: String,
-        val indicators: List<Indicator>
-    ) : Parcelable
 
     private val regionData by lazy { MutableLiveData<GenericResponse<List<RegionModel>>>() }
     fun observeRegionData(): LiveData<GenericResponse<List<RegionModel>>> = regionData

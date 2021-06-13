@@ -1,22 +1,22 @@
 package com.peteralexbizjak.europaopen.ui.adapters
 
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.peteralexbizjak.europaopen.databinding.RulesListItemBinding
-import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
-import java.util.*
+import com.peteralexbizjak.europaopen.ui.viewmodels.models.parcelable.Rule
 
 internal class RuleAdapter(
-    private val ruleData: ArrayList<MeasuresViewModel.Rule>
+    private val ruleData: Array<Rule>
 ) : RecyclerView.Adapter<RuleAdapter.ViewHolder>() {
 
     internal class ViewHolder(
         private val binding: RulesListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(rule: MeasuresViewModel.Rule) {
+        fun bind(rule: Rule) {
             binding.title = rule.title
-            binding.contents = rule.comment
+            binding.contents = Html.fromHtml(rule.comment, Html.FROM_HTML_MODE_LEGACY).toString()
             binding.executePendingBindings()
         }
     }

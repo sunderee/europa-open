@@ -5,22 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.peteralexbizjak.europaopen.databinding.FragmentRuleBinding
 import com.peteralexbizjak.europaopen.ui.adapters.RuleAdapter
-import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
 
 class RuleFragment : Fragment() {
     private var bindingInstance: FragmentRuleBinding? = null
     private val binding get() = bindingInstance!!
 
-    private var recyclerViewAdapter: RuleAdapter? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val rulesData = arguments?.getParcelableArrayList<MeasuresViewModel.Rule>("data")
-        recyclerViewAdapter = rulesData?.let { RuleAdapter(it) }
-    }
+    private val navigationArguments by navArgs<RuleFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +29,7 @@ class RuleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.fragmentRuleRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = recyclerViewAdapter
+            adapter = navigationArguments.rules?.let { RuleAdapter(it) }
         }
     }
 }
