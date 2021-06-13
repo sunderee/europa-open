@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="country"
+            name="title"
             type="String" />
 
         <variable
@@ -31,26 +31,17 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/fragmentTravelInfoStartTitle"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/fragmentTravelInfoStartCode"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/travel_info_for"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/fragmentTravelInfoStartCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@{country, default=`SVN`}"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{title, default=`SVN`}"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textColor="@color/color_product_secondary"
-                    app:layout_constraintStart_toEndOf="@+id/fragmentTravelInfoStartTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -62,7 +53,7 @@
                     android:textAppearance="?attr/textAppearanceBody1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fragmentTravelInfoStartTitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/fragmentTravelInfoStartCode" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
