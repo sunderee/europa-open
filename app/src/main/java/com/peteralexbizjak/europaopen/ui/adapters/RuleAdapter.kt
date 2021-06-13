@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.peteralexbizjak.europaopen.databinding.RulesListItemBinding
 import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
-import java.util.ArrayList
+import java.util.*
 
 internal class RuleAdapter(
     private val ruleData: ArrayList<MeasuresViewModel.Rule>
@@ -17,6 +17,7 @@ internal class RuleAdapter(
         fun bind(rule: MeasuresViewModel.Rule) {
             binding.title = rule.title
             binding.contents = rule.comment
+            binding.executePendingBindings()
         }
     }
 

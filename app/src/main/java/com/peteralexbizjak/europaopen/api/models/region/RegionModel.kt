@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class RegionModel(
+data class RegionModel(
     @SerialName("ISO3")
     val countryCode: String,
 

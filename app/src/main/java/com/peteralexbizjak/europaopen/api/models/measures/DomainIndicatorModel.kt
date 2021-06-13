@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class DomainIndicatorModel(
+data class DomainIndicatorModel(
     @SerialName("indicator_id")
     val id: Int,
 

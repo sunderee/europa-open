@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.parcelize.Parcelize
 
-internal class MeasuresViewModel(
+class MeasuresViewModel(
     private val measureRepository: IMeasureRepository,
     private val regionRepository: IRegionRepository
 ) : ViewModel() {

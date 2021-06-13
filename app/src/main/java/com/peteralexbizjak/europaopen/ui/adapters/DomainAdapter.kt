@@ -2,8 +2,10 @@ package com.peteralexbizjak.europaopen.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.peteralexbizjak.europaopen.databinding.DomainListItemBinding
+import com.peteralexbizjak.europaopen.ui.MeasuresInfoFragmentDirections
 import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
 
 internal class DomainAdapter : RecyclerView.Adapter<DomainAdapter.ViewHolder>() {
@@ -14,6 +16,22 @@ internal class DomainAdapter : RecyclerView.Adapter<DomainAdapter.ViewHolder>() 
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(domainModel: MeasuresViewModel.Indicator) {
             binding.title = domainModel.title
+            binding.root.setOnClickListener {
+                if (domainModel.rules.isEmpty()) {
+                    it.findNavController().navigate(
+                        MeasuresInfoFragmentDirections.actionMeasuresInfoFragmentToRuleSingleFragment(
+                            domainModel.title,
+                            domainModel.comment ?: ""
+                        )
+                    )
+                } else {
+                    it.findNavController().navigate(
+                        MeasuresInfoFragmentDirections.actionMeasuresInfoFragmentToRuleFragment(
+                            domainModel.rules.toTypedArray()
+                        )
+                    )
+                }
+            }
             binding.executePendingBindings()
         }
     }
