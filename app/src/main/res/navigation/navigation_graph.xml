@@ -57,6 +57,6 @@
         tools:layout="@layout/fragment_rule">
         <argument
             android:name="data"
-            app:argType="com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel$Indicator" />
+            app:argType="com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel$Rule[]" />
     </fragment>
 </navigation>
