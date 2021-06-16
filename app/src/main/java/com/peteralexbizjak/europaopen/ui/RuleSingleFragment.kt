@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import com.peteralexbizjak.europaopen.databinding.FragmentRuleSingleBinding
 
@@ -25,10 +24,7 @@ class RuleSingleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
             binding.title = it.getString("title").toString()
-            binding.contents = HtmlCompat.fromHtml(
-                it.getString("contents").toString(),
-                HtmlCompat.FROM_HTML_MODE_COMPACT
-            ).toString()
+            binding.contents = it.getString("contents").toString()
         }
     }
 
