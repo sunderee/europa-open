@@ -9,6 +9,11 @@
 *.ap_
 *.aab
 
+# Remnants of the obfuscation process
+mapping.txt
+seeds.txt
+unused.txt
+
 # Files for the ART/Dalvik VM
 *.dex
 
@@ -19,8 +24,7 @@
 bin/
 gen/
 out/
-#  Uncomment the following line in case you need and you don't have the release build type files in your app
-# release/
+release/
 
 # Gradle files
 .gradle/
