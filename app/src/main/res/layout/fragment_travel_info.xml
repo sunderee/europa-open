@@ -48,6 +48,7 @@
                     android:id="@+id/fragmentTravelInfoStartContents"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:autoLink="web"
                     android:padding="16dp"
                     android:text="@{info, default=`@string/lorem_ipsum`}"
                     android:textAppearance="?attr/textAppearanceBody1"

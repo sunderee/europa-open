@@ -93,7 +93,7 @@
     <fragment
         android:id="@+id/travelInfoFragment"
         android:name="com.peteralexbizjak.europaopen.ui.TravelInfoFragment"
-        android:label="TravelInfoFragment"
+        android:label="Country info"
         tools:layout="@layout/fragment_travel_info">
         <argument
             android:name="travelInfo"

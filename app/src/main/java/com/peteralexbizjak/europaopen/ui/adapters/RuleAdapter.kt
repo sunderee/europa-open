@@ -1,6 +1,6 @@
 package com.peteralexbizjak.europaopen.ui.adapters
 
-import android.text.Html
+import androidx.core.text.HtmlCompat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +16,7 @@ internal class RuleAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(rule: Rule) {
             binding.title = rule.title
-            binding.contents = Html.fromHtml(rule.comment, Html.FROM_HTML_MODE_COMPACT).toString()
+            binding.contents = HtmlCompat.fromHtml(rule.comment, HtmlCompat.FROM_HTML_MODE_COMPACT).toString()
             binding.executePendingBindings()
         }
     }
