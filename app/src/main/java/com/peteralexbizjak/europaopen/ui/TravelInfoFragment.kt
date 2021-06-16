@@ -1,7 +1,6 @@
 package com.peteralexbizjak.europaopen.ui
 
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,10 +27,7 @@ class TravelInfoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             title = navigationArguments.travelInfo?.indicator
-            info = Html.fromHtml(
-                navigationArguments.travelInfo?.restrictions,
-                Html.FROM_HTML_MODE_LEGACY
-            ).toString()
+            info = navigationArguments.travelInfo?.restrictions
         }
     }
 

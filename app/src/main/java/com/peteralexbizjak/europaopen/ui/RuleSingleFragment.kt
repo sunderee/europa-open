@@ -1,7 +1,6 @@
 package com.peteralexbizjak.europaopen.ui
 
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,10 +24,7 @@ class RuleSingleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
             binding.title = it.getString("title").toString()
-            binding.contents = Html.fromHtml(
-                it.getString("contents").toString(),
-                Html.FROM_HTML_MODE_LEGACY
-            ).toString()
+            binding.contents = it.getString("contents").toString()
         }
     }
 
