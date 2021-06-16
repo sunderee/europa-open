@@ -30,7 +30,7 @@ class TravelInfoFragment : Fragment() {
             title = navigationArguments.travelInfo?.indicator
             info = Html.fromHtml(
                 navigationArguments.travelInfo?.restrictions,
-                Html.FROM_HTML_MODE_LEGACY
+                Html.FROM_HTML_MODE_COMPACT
             ).toString()
         }
     }

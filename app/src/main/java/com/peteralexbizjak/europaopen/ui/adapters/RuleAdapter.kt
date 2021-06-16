@@ -16,7 +16,7 @@ internal class RuleAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(rule: Rule) {
             binding.title = rule.title
-            binding.contents = Html.fromHtml(rule.comment, Html.FROM_HTML_MODE_LEGACY).toString()
+            binding.contents = Html.fromHtml(rule.comment, Html.FROM_HTML_MODE_COMPACT).toString()
             binding.executePendingBindings()
         }
     }

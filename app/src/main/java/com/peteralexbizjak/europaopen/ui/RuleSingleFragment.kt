@@ -27,7 +27,7 @@ class RuleSingleFragment : Fragment() {
             binding.title = it.getString("title").toString()
             binding.contents = Html.fromHtml(
                 it.getString("contents").toString(),
-                Html.FROM_HTML_MODE_LEGACY
+                Html.FROM_HTML_MODE_COMPACT
             ).toString()
         }
     }
