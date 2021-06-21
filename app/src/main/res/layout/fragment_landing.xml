@@ -219,62 +219,6 @@
             app:layout_constraintTop_toBottomOf="@+id/fragmentLandingStatsContainer" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/fragmentLandingSettings"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:cardMaxElevation="4dp"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentLandingInfo">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:id="@+id/fragmentLandingSettingsTextContainer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toStartOf="@+id/fragmentLandingSettingsIcon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Headline6"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/settings" />
-
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/settings_description" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/fragmentLandingSettingsIcon"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:contentDescription="@string/settings_content_description"
-                    android:src="@drawable/ic_settings"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
             android:id="@+id/fragmentLandingSource"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -286,7 +230,7 @@
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentLandingSettings">
+            app:layout_constraintTop_toBottomOf="@+id/fragmentLandingInfo">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

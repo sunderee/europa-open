@@ -9,5 +9,17 @@
         android:id="@+id/landingFragment"
         android:name="com.peteralexbizjak.europaopen.ui.LandingFragment"
         android:label="Europa Open"
-        tools:layout="@layout/fragment_landing" />
+        tools:layout="@layout/fragment_landing">
+        <action
+            android:id="@+id/action_landingFragment_to_dataSourceFragment"
+            app:destination="@id/dataSourceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataSourceFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.DataSourceFragment"
+        tools:layout="@layout/fragment_data_source">
+        <action
+            android:id="@+id/action_dataSourceFragment_to_landingFragment"
+            app:destination="@id/landingFragment" />
+    </fragment>
 </navigation>

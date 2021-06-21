@@ -27,4 +27,8 @@
     <string name="source_description">What are our sources and where to look for more information</string>
     <string name="code">Open source</string>
     <string name="code_description">We are committed to the open source, learn where you can contribute yourself</string>
+    <string name="sources_title">What are our sources?</string>
+    <string name="more_info_title">Where can I get more info?</string>
+    <string name="sources_description">Data is pulled from Reopen Europa API.</string>
+    <string name="more_info_description">More info coming in the future, but for now you can check the GitHub repository</string>
 </resources>

@@ -20,11 +20,12 @@
     <string name="stats_description">Retrieve detailed information on measures in place for a selected country</string>
     <string name="retrieve_statistics">Obtain data</string>
     <string name="about_app"><![CDATA[About app & FAQ]]></string>
-    <string name="settings">Settings</string>
-    <string name="settings_description">Access application settings</string>
-    <string name="settings_content_description">Settings icon</string>
     <string name="source">Data source</string>
     <string name="source_description">What are our sources and where to look for more information</string>
     <string name="code">Open source</string>
     <string name="code_description">We are committed to the open source, learn where you can contribute yourself</string>
+    <string name="sources_title">What are our sources?</string>
+    <string name="sources_description">Data is pulled from Reopen Europa API.</string>
+    <string name="more_info_title">Where can I get more info?</string>
+    <string name="more_info_description">More info coming in the future, but for now you can check the GitHub repository</string>
 </resources>

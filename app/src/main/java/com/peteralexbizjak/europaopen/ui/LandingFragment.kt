@@ -10,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.URLUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.peteralexbizjak.europaopen.R
 import com.peteralexbizjak.europaopen.databinding.FragmentLandingBinding
 
 class LandingFragment : Fragment() {
@@ -29,8 +31,18 @@ class LandingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Navigate to data source fragment
+        binding.fragmentLandingTravel.setOnClickListener {
+            binding.root.findNavController().navigate(R.id.dataSourceFragment)
+        }
+
         // Launch URL to the GitHub repository
         binding.fragmentLandingCode.setOnClickListener { launchURL(it) }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        bindingInstance = null
     }
 
     @Throws(ActivityNotFoundException::class)
@@ -53,4 +65,6 @@ class LandingFragment : Fragment() {
     }
 
     private fun String.isUrlValid(): Boolean = URLUtil.isValidUrl(this)
+
+
 }
