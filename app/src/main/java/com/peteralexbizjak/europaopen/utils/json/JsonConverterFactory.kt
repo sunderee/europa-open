@@ -1,4 +1,4 @@
-package com.peteralexbizjak.europaopen.utils
+package com.peteralexbizjak.europaopen.utils.json
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.RequestBody

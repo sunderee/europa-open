@@ -1,4 +1,4 @@
-package com.peteralexbizjak.europaopen.utils
+package com.peteralexbizjak.europaopen.utils.json
 
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString

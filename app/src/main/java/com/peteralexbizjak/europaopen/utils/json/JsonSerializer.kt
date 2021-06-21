@@ -1,4 +1,4 @@
-package com.peteralexbizjak.europaopen.utils
+package com.peteralexbizjak.europaopen.utils.json
 
 import kotlinx.serialization.*
 import okhttp3.MediaType.Companion.toMediaType

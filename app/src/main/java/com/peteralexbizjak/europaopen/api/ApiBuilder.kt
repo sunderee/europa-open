@@ -1,6 +1,6 @@
 package com.peteralexbizjak.europaopen.api
 
-import com.peteralexbizjak.europaopen.utils.JsonConverterFactory
+import com.peteralexbizjak.europaopen.utils.json.JsonConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

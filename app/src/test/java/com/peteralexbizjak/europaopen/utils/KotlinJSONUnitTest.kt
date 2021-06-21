@@ -1,5 +1,7 @@
 package com.peteralexbizjak.europaopen.utils
 
+import com.peteralexbizjak.europaopen.utils.json.deserialize
+import com.peteralexbizjak.europaopen.utils.json.serialize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.junit.Assert.assertTrue
