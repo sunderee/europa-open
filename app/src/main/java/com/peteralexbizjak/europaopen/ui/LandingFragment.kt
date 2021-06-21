@@ -30,13 +30,12 @@ class LandingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Launch URL to the GitHub repository
-        binding.fragmentLandingCode.setOnClickListener {
-            launchURL(it, "https://github.com/sunderee/EuropaOpen")
-        }
+        binding.fragmentLandingCode.setOnClickListener { launchURL(it) }
     }
 
     @Throws(ActivityNotFoundException::class)
-    private fun launchURL(view: View, url: String) {
+    private fun launchURL(view: View) {
+        val url = "https://github.com/sunderee/EuropaOpen"
         if (url.isUrlValid()) {
             val urlLauncherIntent = Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse(url)
