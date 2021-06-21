@@ -25,7 +25,9 @@
     <string name="code">Open source</string>
     <string name="code_description">We are committed to the open source, learn where you can contribute yourself</string>
     <string name="sources_title">What are our sources?</string>
-    <string name="sources_description">Data is pulled from Reopen Europa API.</string>
+    <string name="sources_description">Data is pulled from Reopen Europa API. As per their own disclaimer on the unreliability of the service: The information on this page is not exhaustive. It is based on the most recent available data provided by EU Member States and collected from other publicly available and authoritative national sources. While the Commission seeks to keep the information up to date, we take no responsibility of any kind, express or implied, about the completeness and accuracy of the information contained in this page or individual decisions based thereon.</string>
     <string name="more_info_title">Where can I get more info?</string>
-    <string name="more_info_description">More info coming in the future, but for now you can check the GitHub repository</string>
+    <string name="more_info_description">There are a few ways on reaching out. First, you can check the official Reopen Europa website, you can check the GitHub repository or contact developers directly.</string>
+    <string name="official_website">Official website</string>
+    <string name="github_repository">GitHub repository</string>
 </resources>
