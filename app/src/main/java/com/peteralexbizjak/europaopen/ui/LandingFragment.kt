@@ -1,14 +1,17 @@
 package com.peteralexbizjak.europaopen.ui
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.peteralexbizjak.europaopen.databinding.FragmentRuleSingleBinding
+import com.peteralexbizjak.europaopen.R
+import com.peteralexbizjak.europaopen.databinding.FragmentLandingBinding
 
-class RuleSingleFragment : Fragment() {
-    private var bindingInstance: FragmentRuleSingleBinding? = null
+
+class LandingFragment : Fragment() {
+    private var bindingInstance: FragmentLandingBinding? = null
     private val binding get() = bindingInstance!!
 
     override fun onCreateView(
@@ -16,20 +19,11 @@ class RuleSingleFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        bindingInstance = FragmentRuleSingleBinding.inflate(inflater, container, false)
+        bindingInstance = FragmentLandingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let {
-            binding.title = it.getString("title").toString()
-            binding.contents = it.getString("contents").toString()
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        bindingInstance = null
     }
 }

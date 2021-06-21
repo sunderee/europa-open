@@ -1,12 +1,14 @@
 package com.peteralexbizjak.europaopen.api
 
 import com.peteralexbizjak.europaopen.utils.JsonConverterFactory
+import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
 private const val BASE_URL = "https://reopen.europa.eu/"
 
+@ExperimentalSerializationApi
 internal fun buildRetrofit(baseURL: String = BASE_URL): Retrofit = Retrofit.Builder()
     .baseUrl(baseURL)
     .client(

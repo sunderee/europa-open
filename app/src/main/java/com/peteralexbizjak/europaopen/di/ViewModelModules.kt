@@ -20,11 +20,8 @@ import com.peteralexbizjak.europaopen.db.AppDatabase
 import com.peteralexbizjak.europaopen.db.daos.CountryDao
 import com.peteralexbizjak.europaopen.db.repositories.ICountryDBRepository
 import com.peteralexbizjak.europaopen.db.repositories.implementations.CountryDBRepository
-import com.peteralexbizjak.europaopen.ui.viewmodels.CountryViewModel
-import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
-import com.peteralexbizjak.europaopen.ui.viewmodels.TravelViewModel
+import kotlinx.serialization.ExperimentalSerializationApi
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 private const val DATABASE_NAME = "cache"
@@ -36,8 +33,10 @@ private fun getDatabaseInstance(context: Context): AppDatabase = Room
 
 private fun provideCountryDAO(database: AppDatabase): CountryDao = database.countryDao()
 
+@ExperimentalSerializationApi
 private val retrofitInstance = buildRetrofit()
 
+@ExperimentalSerializationApi
 internal val countriesViewModelModule = module {
     single { buildService(retrofitInstance, CountryService::class.java) }
     single<ICountryRepository> { CountryRepository(service = get()) }
@@ -46,9 +45,10 @@ internal val countriesViewModelModule = module {
     single { provideCountryDAO(database = get()) }
     single<ICountryDBRepository> { CountryDBRepository(countryDAO = get()) }
 
-    viewModel { CountryViewModel(apiRepository = get(), databaseRepository = get()) }
+//    viewModel { CountryViewModel(apiRepository = get(), databaseRepository = get()) }
 }
 
+@ExperimentalSerializationApi
 internal val measuresViewModelModule = module {
     single { buildService(retrofitInstance, MeasuresService::class.java) }
     single<IMeasureRepository> { MeasureRepository(service = get()) }
@@ -56,12 +56,13 @@ internal val measuresViewModelModule = module {
     single { buildService(retrofitInstance, RegionService::class.java) }
     single<IRegionRepository> { RegionRepository(service = get()) }
 
-    viewModel { MeasuresViewModel(measureRepository = get(), regionRepository = get()) }
+//    viewModel { MeasuresViewModel(measureRepository = get(), regionRepository = get()) }
 }
 
+@ExperimentalSerializationApi
 internal val travelViewModelModule = module {
     single { buildService(retrofitInstance, TravelService::class.java) }
     single<ITravelRepository> { TravelRepository(service = get()) }
 
-    viewModel { TravelViewModel(repository = get()) }
+//    viewModel { TravelViewModel(repository = get()) }
 }

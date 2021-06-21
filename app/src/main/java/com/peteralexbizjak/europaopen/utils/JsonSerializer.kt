@@ -1,15 +1,13 @@
 package com.peteralexbizjak.europaopen.utils
 
-import kotlinx.serialization.DeserializationStrategy
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.SerializationStrategy
-import kotlinx.serialization.serializer
+import kotlinx.serialization.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.ResponseBody
 import java.lang.reflect.Type
 
+@ExperimentalSerializationApi
 internal class JsonSerializer {
     fun serializer(type: Type): KSerializer<Any> =
         json.serializersModule.serializer(type)
