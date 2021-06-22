@@ -7,16 +7,20 @@ import androidx.lifecycle.viewModelScope
 import com.peteralexbizjak.europaopen.api.models.region.RegionModel
 import com.peteralexbizjak.europaopen.api.repositories.IMeasureRepository
 import com.peteralexbizjak.europaopen.api.repositories.IRegionRepository
+import com.peteralexbizjak.europaopen.db.entities.RegionEntity
+import com.peteralexbizjak.europaopen.db.repositories.IRegionDBRepository
 import com.peteralexbizjak.europaopen.models.GenericResponse
 import com.peteralexbizjak.europaopen.models.statistics.Domain
 import com.peteralexbizjak.europaopen.models.statistics.Indicator
 import com.peteralexbizjak.europaopen.models.statistics.Rule
+import com.peteralexbizjak.europaopen.utils.exceptions.DatabaseException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 internal class StatisticsViewModel(
     private val measureRepository: IMeasureRepository,
-    private val regionRepository: IRegionRepository
+    private val regionRepository: IRegionRepository,
+    private val regionDBRepository: IRegionDBRepository
 ) : ViewModel() {
     private val domainLiveData by lazy { MutableLiveData<GenericResponse<List<Domain>>>() }
     val domainData: LiveData<GenericResponse<List<Domain>>> get() = domainLiveData
@@ -67,10 +71,23 @@ internal class StatisticsViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             regionLiveData.postValue(GenericResponse.Loading)
             val data = regionRepository.requestRegionsPerCountry(countryCode)
-            regionLiveData.postValue(
-                if (data.isNotEmpty()) GenericResponse.Success(data)
-                else GenericResponse.Error("No data available for $countryCode")
-            )
+            try {
+                if (persistLocally) {
+                    regionDBRepository.storeRegions(data.map {
+                        RegionEntity(
+                            countryCode = it.countryCode,
+                            regionName = it.region,
+                            regionColor = it.color
+                        )
+                    })
+                }
+                regionLiveData.postValue(
+                    if (data.isNotEmpty()) GenericResponse.Success(data)
+                    else GenericResponse.Error("No data available for $countryCode")
+                )
+            } catch (e: DatabaseException) {
+                regionLiveData.postValue(GenericResponse.Error(e.message ?: "Unknown errors"))
+            }
         }
     }
 }
