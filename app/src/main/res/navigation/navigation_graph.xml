@@ -33,5 +33,8 @@
         <argument
             android:name="country"
             app:argType="string" />
+        <action
+            android:id="@+id/action_statisticsInfoFragment_to_landingFragment"
+            app:destination="@id/landingFragment" />
     </fragment>
 </navigation>
