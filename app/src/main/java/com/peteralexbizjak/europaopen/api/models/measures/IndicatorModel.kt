@@ -1,11 +1,8 @@
 package com.peteralexbizjak.europaopen.api.models.measures
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Parcelize
 @Serializable
 data class IndicatorModel(
     @SerialName("domain_id")
@@ -25,4 +22,4 @@ data class IndicatorModel(
 
     @SerialName("rules")
     val additionalRules: List<Int>
-) : Parcelable
+)

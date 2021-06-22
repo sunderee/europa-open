@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/landingFragment"
-        android:name="com.peteralexbizjak.europaopen.ui.LandingFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.landing.LandingFragment"
         android:label="Europa Open"
         tools:layout="@layout/fragment_landing">
         <action
@@ -17,5 +17,9 @@
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="com.peteralexbizjak.europaopen.ui.StatisticsFragment"
-        tools:layout="@layout/fragment_statistics" />
+        tools:layout="@layout/fragment_statistics">
+        <argument
+            android:name="countries"
+            app:argType="com.peteralexbizjak.europaopen.api.models.country.CountryModel[]" />
+    </fragment>
 </navigation>
