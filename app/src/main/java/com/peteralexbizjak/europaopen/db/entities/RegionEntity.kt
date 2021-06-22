@@ -16,6 +16,6 @@ internal data class RegionEntity(
     @ColumnInfo(name = "region")
     val regionName: String,
 
-    @ColumnInfo(name = "region")
+    @ColumnInfo(name = "color")
     val regionColor: String
 )

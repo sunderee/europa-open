@@ -15,8 +15,11 @@ import com.peteralexbizjak.europaopen.api.services.MeasuresService
 import com.peteralexbizjak.europaopen.api.services.RegionService
 import com.peteralexbizjak.europaopen.db.AppDatabase
 import com.peteralexbizjak.europaopen.db.daos.CountryDao
+import com.peteralexbizjak.europaopen.db.daos.RegionDao
 import com.peteralexbizjak.europaopen.db.repositories.ICountryDBRepository
+import com.peteralexbizjak.europaopen.db.repositories.IRegionDBRepository
 import com.peteralexbizjak.europaopen.db.repositories.implementations.CountryDBRepository
+import com.peteralexbizjak.europaopen.db.repositories.implementations.RegionDBRepository
 import com.peteralexbizjak.europaopen.ui.landing.LandingViewModel
 import com.peteralexbizjak.europaopen.ui.statistics.StatisticsViewModel
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -32,6 +35,8 @@ private fun getDatabaseInstance(context: Context): AppDatabase = Room
     .build()
 
 private fun provideCountryDAO(database: AppDatabase): CountryDao = database.countryDao()
+
+private fun provideRegionDAO(database: AppDatabase): RegionDao = database.regionDao()
 
 @ExperimentalSerializationApi
 private val retrofitInstance = buildRetrofit()
@@ -56,5 +61,15 @@ internal val statisticsModule = module {
     single { buildService(retrofitInstance, RegionService::class.java) }
     single<IRegionRepository> { RegionRepository(service = get()) }
 
-    viewModel { StatisticsViewModel(measureRepository = get(), regionRepository = get()) }
+    single { getDatabaseInstance(androidContext()) }
+    single { provideRegionDAO(database = get()) }
+    single<IRegionDBRepository> { RegionDBRepository(regionDao = get()) }
+
+    viewModel {
+        StatisticsViewModel(
+            measureRepository = get(),
+            regionRepository = get(),
+            regionDBRepository = get()
+        )
+    }
 }
