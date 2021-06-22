@@ -27,4 +27,9 @@
     <string name="feedback_description">We would love to hear from you and what you think about the app. Contact developers directly.</string>
     <string name="feedback_content_description">Message and pen icon</string>
     <string name="submit_feedback">Submit feedback</string>
+    <string name="country">Country</string>
+    <string name="country_from_list">Country data</string>
+    <string name="country_from_list_description">Select country from the list. You can also opt in on downloading data for later use</string>
+    <string name="download_data">Download data for offline retrieval</string>
+    <string name="go">Go</string>
 </resources>
