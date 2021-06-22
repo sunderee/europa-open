@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.peteralexbizjak.europaopen.ui.StatisticsFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.statistics.StatisticsFragment"
         tools:layout="@layout/fragment_statistics">
         <argument
             android:name="countries"
