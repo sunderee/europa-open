@@ -7,6 +7,7 @@
         irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
         anim id est laborum.</string>
+    <string name="bullet">•</string>
 
     <string name="landing_title">Explore the world</string>
     <string name="landing_subtitle">Today, tourist destinations are opening up again, people are getting vaccinated and life is returning to normal</string>
@@ -33,4 +34,10 @@
     <string name="download_data">Download data for offline retrieval</string>
     <string name="go">Go</string>
     <string name="stats_for_country">Statistics for country</string>
+    <string name="location_content_description">Location icon</string>
+    <string name="stats_info_description">Access stats per region, find about travel restrictions, countermeasures, health info and other information</string>
+    <string name="per_region">Statistics per region</string>
+    <string name="region">Regions</string>
+    <string name="region_description">Country regions and their respective color codes</string>
+    <string name="region_state_content_description">Icon representing regions in a state</string>
 </resources>
