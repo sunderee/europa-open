@@ -19,18 +19,12 @@
     <string name="stats">Statistics</string>
     <string name="stats_description">Retrieve detailed information on measures in place for a selected country</string>
     <string name="retrieve_statistics">Obtain data</string>
-    <string name="about_app"><![CDATA[About app & FAQ]]></string>
-    <string name="settings">Settings</string>
-    <string name="settings_description">Access application settings</string>
-    <string name="settings_content_description">Settings icon</string>
-    <string name="source">Data source</string>
-    <string name="source_description">What are our sources and where to look for more information</string>
+    <string name="about_app">Info</string>
     <string name="code">Open source</string>
     <string name="code_description">We are committed to the open source, learn where you can contribute yourself</string>
-    <string name="sources_title">What are our sources?</string>
-    <string name="more_info_title">Where can I get more info?</string>
-    <string name="sources_description">Data is pulled from Reopen Europa API. As per their own disclaimer on the unreliability of the service: The information on this page is not exhaustive. It is based on the most recent available data provided by EU Member States and collected from other publicly available and authoritative national sources. While the Commission seeks to keep the information up to date, we take no responsibility of any kind, express or implied, about the completeness and accuracy of the information contained in this page or individual decisions based thereon.</string>
-    <string name="more_info_description">There are a few ways on reaching out. First, you can check the official Reopen Europa website, you can check the GitHub repository or contact developers directly.</string>
-    <string name="official_website">Official website</string>
-    <string name="github_repository">GitHub repository</string>
+    <string name="code_content_description">HTML-like icon representing coding</string>
+    <string name="feedback">Feedback</string>
+    <string name="feedback_description">We would love to hear from you and what you think about the app. Contact developers directly.</string>
+    <string name="feedback_content_description">Message and pen icon</string>
+    <string name="submit_feedback">Submit feedback</string>
 </resources>
