@@ -15,10 +15,13 @@ import com.peteralexbizjak.europaopen.api.services.MeasuresService
 import com.peteralexbizjak.europaopen.api.services.RegionService
 import com.peteralexbizjak.europaopen.db.AppDatabase
 import com.peteralexbizjak.europaopen.db.daos.CountryDao
+import com.peteralexbizjak.europaopen.db.daos.DomainDao
 import com.peteralexbizjak.europaopen.db.daos.RegionDao
 import com.peteralexbizjak.europaopen.db.repositories.ICountryDBRepository
+import com.peteralexbizjak.europaopen.db.repositories.IDomainDBRepository
 import com.peteralexbizjak.europaopen.db.repositories.IRegionDBRepository
 import com.peteralexbizjak.europaopen.db.repositories.implementations.CountryDBRepository
+import com.peteralexbizjak.europaopen.db.repositories.implementations.DomainDBRepository
 import com.peteralexbizjak.europaopen.db.repositories.implementations.RegionDBRepository
 import com.peteralexbizjak.europaopen.ui.landing.LandingViewModel
 import com.peteralexbizjak.europaopen.ui.statistics.StatisticsViewModel
@@ -35,8 +38,8 @@ private fun getDatabaseInstance(context: Context): AppDatabase = Room
     .build()
 
 private fun provideCountryDAO(database: AppDatabase): CountryDao = database.countryDao()
-
 private fun provideRegionDAO(database: AppDatabase): RegionDao = database.regionDao()
+private fun provideDomainDAO(database: AppDatabase): DomainDao = database.domainDao()
 
 @ExperimentalSerializationApi
 private val retrofitInstance = buildRetrofit()
@@ -54,7 +57,7 @@ internal val landingModule = module {
 }
 
 @ExperimentalSerializationApi
-internal val statisticsModule = module {
+internal val statisticsModule = module(override = true) {
     single { buildService(retrofitInstance, MeasuresService::class.java) }
     single<IMeasureRepository> { MeasureRepository(service = get()) }
 
@@ -63,13 +66,16 @@ internal val statisticsModule = module {
 
     single { getDatabaseInstance(androidContext()) }
     single { provideRegionDAO(database = get()) }
+    single { provideDomainDAO(database = get()) }
     single<IRegionDBRepository> { RegionDBRepository(regionDao = get()) }
+    single<IDomainDBRepository> { DomainDBRepository(domainDao = get()) }
 
     viewModel {
         StatisticsViewModel(
             measureRepository = get(),
             regionRepository = get(),
-            regionDBRepository = get()
+            regionDBRepository = get(),
+            domainDBRepository = get()
         )
     }
 }

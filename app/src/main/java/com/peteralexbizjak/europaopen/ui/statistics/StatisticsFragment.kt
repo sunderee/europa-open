@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.peteralexbizjak.europaopen.R
 import com.peteralexbizjak.europaopen.api.models.country.CountryModel
@@ -61,20 +62,18 @@ class StatisticsFragment : Fragment() {
                 Snackbar.make(it, "No country selected", Snackbar.LENGTH_SHORT).show()
             }
 
+            val shouldCache = binding.fragmentStatisticsCheckbox.isChecked
             statisticsViewModel.apply {
-                getShortName?.let { name ->
-                    requestDomainData(
-                        name,
-                        binding.fragmentStatisticsCheckbox.isChecked
-                    )
-                }
-                getShortName?.let { name ->
-                    requestRegionsData(
-                        name,
-                        binding.fragmentStatisticsCheckbox.isChecked
-                    )
-                }
+                getShortName?.let { name -> requestDomainData(name, shouldCache) }
+                getShortName?.let { name -> requestRegionsData(name, shouldCache) }
             }
+
+            binding.root.findNavController()
+                .navigate(
+                    StatisticsFragmentDirections.actionStatisticsFragmentToStatisticsInfoFragment(
+                        selectedCountry
+                    )
+                )
         }
     }
 

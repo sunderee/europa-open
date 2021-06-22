@@ -7,7 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.peteralexbizjak.europaopen.api.models.region.RegionModel
 import com.peteralexbizjak.europaopen.api.repositories.IMeasureRepository
 import com.peteralexbizjak.europaopen.api.repositories.IRegionRepository
+import com.peteralexbizjak.europaopen.db.entities.DomainEntity
+import com.peteralexbizjak.europaopen.db.entities.IndicatorEntity
 import com.peteralexbizjak.europaopen.db.entities.RegionEntity
+import com.peteralexbizjak.europaopen.db.repositories.IDomainDBRepository
 import com.peteralexbizjak.europaopen.db.repositories.IRegionDBRepository
 import com.peteralexbizjak.europaopen.models.GenericResponse
 import com.peteralexbizjak.europaopen.models.statistics.Domain
@@ -20,7 +23,8 @@ import kotlinx.coroutines.launch
 internal class StatisticsViewModel(
     private val measureRepository: IMeasureRepository,
     private val regionRepository: IRegionRepository,
-    private val regionDBRepository: IRegionDBRepository
+    private val regionDBRepository: IRegionDBRepository,
+    private val domainDBRepository: IDomainDBRepository
 ) : ViewModel() {
     private val domainLiveData by lazy { MutableLiveData<GenericResponse<List<Domain>>>() }
     val domainData: LiveData<GenericResponse<List<Domain>>> get() = domainLiveData
@@ -51,14 +55,32 @@ internal class StatisticsViewModel(
                             ?.restrictions ?: "No data",
                         rules
                             .filter { indicator.rules.contains(it.id) }
-                            .map { Rule(it.indicator, it.restrictions) }
+                            .map { Rule(it.id, it.indicator, it.restrictions) }
                     )
                 }
             val domainIndicatorRules = domains.map { domain ->
                 Domain(
+                    domain.id,
                     domain.name,
                     indicators.filter { it.domainID == domain.id }
                 )
+            }
+            if (persistLocally) {
+                domainIndicatorRules.forEach { domain ->
+                    domainDBRepository.storeDomainAndIndicators(
+                        DomainEntity(
+                            domainID = domain.id,
+                            domainName = domain.title
+                        ),
+                        domain.indicators.map { indicator ->
+                            IndicatorEntity(
+                                belongingDomainID = indicator.domainID,
+                                indicatorName = indicator.title,
+                                rules = indicator.rules.joinToString(",") { it.id.toString() }
+                            )
+                        }
+                    )
+                }
             }
             domainLiveData.postValue(
                 if (domainIndicatorRules.isNotEmpty()) GenericResponse.Success(domainIndicatorRules)

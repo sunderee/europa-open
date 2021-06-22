@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Rule(
+    val id: Int,
     val title: String,
     val comment: String
 ) : Parcelable

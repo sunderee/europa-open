@@ -21,5 +21,17 @@
         <argument
             android:name="countries"
             app:argType="com.peteralexbizjak.europaopen.api.models.country.CountryModel[]" />
+        <action
+            android:id="@+id/action_statisticsFragment_to_statisticsInfoFragment"
+            app:destination="@id/statisticsInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statisticsInfoFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.statistics.StatisticsInfoFragment"
+        android:label="StatisticsInfoFragment"
+        tools:layout="@layout/fragment_statistics_info">
+        <argument
+            android:name="country"
+            app:argType="string" />
     </fragment>
 </navigation>
