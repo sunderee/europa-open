@@ -1,19 +1,16 @@
 package com.peteralexbizjak.europaopen.db.daos
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.peteralexbizjak.europaopen.db.entities.DomainEntity
 import com.peteralexbizjak.europaopen.db.entities.DomainWithIndicators
 import com.peteralexbizjak.europaopen.db.entities.IndicatorEntity
 
 @Dao
 internal interface DomainDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun storeDomain(domain: DomainEntity)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun storeIndicators(indicators: List<IndicatorEntity>)
 
     @Transaction
