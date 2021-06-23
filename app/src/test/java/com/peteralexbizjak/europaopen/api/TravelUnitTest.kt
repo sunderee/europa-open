@@ -4,6 +4,7 @@ import com.peteralexbizjak.europaopen.api.repositories.ITravelRepository
 import com.peteralexbizjak.europaopen.api.repositories.implementations.TravelRepository
 import com.peteralexbizjak.europaopen.api.services.TravelService
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.ExperimentalSerializationApi
 import org.junit.Rule
 import org.junit.Test
 import org.koin.dsl.module
@@ -11,6 +12,7 @@ import org.koin.test.KoinTest
 import org.koin.test.KoinTestRule
 import org.koin.test.inject
 
+@ExperimentalSerializationApi
 class TravelUnitTest : KoinTest {
     private val travelModule = module(override = true) {
         single { buildService(buildRetrofit(), TravelService::class.java) }

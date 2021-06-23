@@ -5,6 +5,7 @@ import com.peteralexbizjak.europaopen.api.repositories.implementations.CountryRe
 import com.peteralexbizjak.europaopen.api.services.CountryService
 import com.peteralexbizjak.europaopen.utils.constants.Direction
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.ExperimentalSerializationApi
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -13,6 +14,7 @@ import org.koin.test.KoinTest
 import org.koin.test.KoinTestRule
 import org.koin.test.inject
 
+@ExperimentalSerializationApi
 internal class CountryUnitTest : KoinTest {
     private val countryModule = module(override = true) {
         single { buildService(buildRetrofit(), CountryService::class.java) }

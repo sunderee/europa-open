@@ -4,6 +4,7 @@ import com.peteralexbizjak.europaopen.api.repositories.IRegionRepository
 import com.peteralexbizjak.europaopen.api.repositories.implementations.RegionRepository
 import com.peteralexbizjak.europaopen.api.services.RegionService
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.ExperimentalSerializationApi
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -12,6 +13,7 @@ import org.koin.test.KoinTest
 import org.koin.test.KoinTestRule
 import org.koin.test.inject
 
+@ExperimentalSerializationApi
 internal class RegionUnitTest : KoinTest {
     private val regionModule = module(override = true) {
         single { buildService(buildRetrofit(), RegionService::class.java) }

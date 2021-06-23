@@ -4,6 +4,7 @@ import com.peteralexbizjak.europaopen.api.repositories.IMeasureRepository
 import com.peteralexbizjak.europaopen.api.repositories.implementations.MeasureRepository
 import com.peteralexbizjak.europaopen.api.services.MeasuresService
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.ExperimentalSerializationApi
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -13,6 +14,7 @@ import org.koin.test.KoinTestRule
 import org.koin.test.inject
 import kotlin.test.assertTrue
 
+@ExperimentalSerializationApi
 internal class MeasuresUnitTest : KoinTest {
     private val measuresModule = module(override = true) {
         single { buildService(buildRetrofit(), MeasuresService::class.java) }
