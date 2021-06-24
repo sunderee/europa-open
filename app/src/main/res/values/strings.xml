@@ -40,4 +40,13 @@
     <string name="region">Regions</string>
     <string name="region_description">Country regions and their respective color codes</string>
     <string name="region_state_content_description">Icon representing regions in a state</string>
+    <string name="more_info">More info</string>
+    <string name="travel_description_second">All necessary travel info when planning your new adventure</string>
+    <string name="hiking_content_description">Image representing a person hiking to mountains</string>
+    <string name="covid_measures">Coronavirus Measures</string>
+    <string name="covid_measures_description">What are the state measures when it comes to fighting Covid pandemic?</string>
+    <string name="health_situation">Health Situation</string>
+    <string name="health_situation_description">Current health situation in the country and where to look for medical help</string>
+    <string name="covid_content_description">Image representing the Covid-19, also known as coronavirus</string>
+    <string name="more_info_description">Information not otherwise available above</string>
 </resources>

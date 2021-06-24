@@ -47,6 +47,10 @@ class LandingFragment : Fragment() {
 
                     // On click listeners
                     binding.apply {
+                        fragmentLandingRequestTravelInfo.setOnClickListener {
+                            Snackbar.make(it, "Not available yet", Snackbar.LENGTH_SHORT).show()
+                        }
+
                         fragmentLandingObtainData.setOnClickListener { _ ->
                             binding.root.findNavController()
                                 .navigate(
