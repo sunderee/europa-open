@@ -9,14 +9,12 @@ import java.lang.reflect.Type
 
 @ExperimentalSerializationApi
 internal class JsonSerializer {
-    fun serializer(type: Type): KSerializer<Any> =
-        json.serializersModule.serializer(type)
+    fun serializer(type: Type): KSerializer<Any> = json.serializersModule.serializer(type)
 
     fun <T> fromResponseBody(loader: DeserializationStrategy<T>, body: ResponseBody): T =
         json.decodeFromString(loader, body.byteStream().use { it.reader().readText() })
 
-    fun <T> toRequestBody(saver: SerializationStrategy<T>, value: T): RequestBody =
-        json
-            .encodeToString(saver, value)
-            .toRequestBody("application/json; charset=UTF-8".toMediaType())
+    fun <T> toRequestBody(saver: SerializationStrategy<T>, value: T): RequestBody = json
+        .encodeToString(saver, value)
+        .toRequestBody("application/json; charset=UTF-8".toMediaType())
 }

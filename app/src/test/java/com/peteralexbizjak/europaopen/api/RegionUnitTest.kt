@@ -30,7 +30,7 @@ internal class RegionUnitTest : KoinTest {
     @Test
     fun testRequestingFrenchRegions() {
         val frenchRegions = runBlocking { repository.requestRegionsPerCountry("FRA") }
-        println("French regions: ${frenchRegions.joinToString("\n") { "${it.region}: ${it.color}" }}")
+        println("French regions: ${frenchRegions.joinToString("\n") { it.region }}")
         assertTrue(frenchRegions.isNotEmpty())
     }
 }

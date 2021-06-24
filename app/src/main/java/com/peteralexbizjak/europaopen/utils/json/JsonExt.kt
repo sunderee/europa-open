@@ -6,7 +6,6 @@ import kotlinx.serialization.json.Json
 
 internal val json = Json {
     ignoreUnknownKeys = true
-    isLenient = true
 }
 
 internal inline fun <reified T> T.serialize(): String = json.encodeToString(this)
