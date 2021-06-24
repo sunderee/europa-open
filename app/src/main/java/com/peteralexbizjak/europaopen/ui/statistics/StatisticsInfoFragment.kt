@@ -60,6 +60,15 @@ class StatisticsInfoFragment : Fragment() {
                     binding.apply {
                         fragmentStatisticsInfoContent.visibility = View.VISIBLE
                         fragmentStatisticsInfoProgressBar.visibility = View.GONE
+
+                        // On click listeners
+                        fragmentStatisticsInfoTravelCard.setOnClickListener { }
+
+                        fragmentStatisticsInfoMeasuresCard.setOnClickListener { }
+
+                        fragmentStatisticsInfoHealthSituationCard.setOnClickListener { }
+
+                        fragmentStatisticsInfoInfoCard.setOnClickListener { }
                     }
                     recyclerViewAdapter.setNewData(it.data)
                 }
