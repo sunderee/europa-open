@@ -16,6 +16,8 @@ the project and open it in Android Studio.
 Check [Code of Conduct](CODE_OF_CONDUCT.md) and [contribution guidelines](CONTRIBUTING.md) for more
 information.
 
-## License
+## License & Availability
 
-Project is open sourced under the MIT license.
+Project is open sourced under the MIT license. App is published on Google Play Store, currently in the open testing phase.
+
+[<img src="./store.svg">](https://play.google.com/store/apps/details?id=com.peteralexbizjak.europaopen)
