@@ -41,10 +41,12 @@ internal class StatisticsViewModel(
                 .flatMap { it.indicators }
                 .map { indicator ->
                     val indicatorID = indicator.id
-                    val rules = measureRepository.fetchRules(
-                        countryCode,
-                        listOf(indicatorID, *indicator.rules.toTypedArray())
-                    ).flatMap { it.data }
+                    val rules = measureRepository
+                        .fetchRules(
+                            countryCode,
+                            listOf(indicatorID, *indicator.rules.toTypedArray())
+                        )
+                        .flatMap { it.data }
                     Indicator(
                         rules
                             .find { it.id == indicatorID }

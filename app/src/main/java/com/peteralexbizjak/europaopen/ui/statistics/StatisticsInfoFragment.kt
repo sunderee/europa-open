@@ -27,7 +27,7 @@ class StatisticsInfoFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            country = it.getString("country") as String
+            country = it.getString("country") ?: ""
         }
     }
 
@@ -62,13 +62,41 @@ class StatisticsInfoFragment : Fragment() {
                         fragmentStatisticsInfoProgressBar.visibility = View.GONE
 
                         // On click listeners
-                        fragmentStatisticsInfoTravelCard.setOnClickListener { }
+                        fragmentStatisticsInfoTravelCard.setOnClickListener {
+                            root.findNavController().navigate(
+                                StatisticsInfoFragmentDirections.actionStatisticsInfoFragmentToInfoFragment(
+                                    "Travel",
+                                    TRAVEL_DOMAIN_ID
+                                )
+                            )
+                        }
 
-                        fragmentStatisticsInfoMeasuresCard.setOnClickListener { }
+                        fragmentStatisticsInfoMeasuresCard.setOnClickListener {
+                            root.findNavController().navigate(
+                                StatisticsInfoFragmentDirections.actionStatisticsInfoFragmentToInfoFragment(
+                                    "Measures",
+                                    MEASURES_DOMAIN_ID
+                                )
+                            )
+                        }
 
-                        fragmentStatisticsInfoHealthSituationCard.setOnClickListener { }
+                        fragmentStatisticsInfoHealthSituationCard.setOnClickListener {
+                            root.findNavController().navigate(
+                                StatisticsInfoFragmentDirections.actionStatisticsInfoFragmentToInfoFragment(
+                                    "Health Situation",
+                                    HEALTH_DOMAIN_ID
+                                )
+                            )
+                        }
 
-                        fragmentStatisticsInfoInfoCard.setOnClickListener { }
+                        fragmentStatisticsInfoInfoCard.setOnClickListener {
+                            root.findNavController().navigate(
+                                StatisticsInfoFragmentDirections.actionStatisticsInfoFragmentToInfoFragment(
+                                    "Info",
+                                    INFO_DOMAIN_ID
+                                )
+                            )
+                        }
                     }
                     recyclerViewAdapter.setNewData(it.data)
                 }
@@ -85,5 +113,12 @@ class StatisticsInfoFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         bindingInstance = null
+    }
+
+    companion object {
+        private const val TRAVEL_DOMAIN_ID = 7
+        private const val MEASURES_DOMAIN_ID = 6
+        private const val HEALTH_DOMAIN_ID = 5
+        private const val INFO_DOMAIN_ID = 8
     }
 }

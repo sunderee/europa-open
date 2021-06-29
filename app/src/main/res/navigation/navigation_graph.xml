@@ -36,5 +36,20 @@
         <action
             android:id="@+id/action_statisticsInfoFragment_to_landingFragment"
             app:destination="@id/landingFragment" />
+        <action
+            android:id="@+id/action_statisticsInfoFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.statistics.info.InfoFragment"
+        android:label="{domain}"
+        tools:layout="@layout/fragment_info">
+        <argument
+            android:name="domain"
+            app:argType="string" />
+        <argument
+            android:name="domain_id"
+            app:argType="integer" />
     </fragment>
 </navigation>

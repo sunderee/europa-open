@@ -5,9 +5,9 @@ import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 
-object BindingUtils {
+internal object BindingUtils {
+    @BindingAdapter(value = ["loadHtml"])
     @JvmStatic
-    @BindingAdapter("loadHtml")
     fun loadHtml(textView: TextView, content: String?) {
         if (!content.isNullOrEmpty()) {
             textView.text = HtmlCompat.fromHtml(content, HtmlCompat.FROM_HTML_MODE_COMPACT)
