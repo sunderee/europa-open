@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_landingFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
+        <action
+            android:id="@+id/action_landingFragment_to_travelFragment"
+            app:destination="@id/travelFragment" />
     </fragment>
     <fragment
         android:id="@+id/statisticsFragment"
@@ -51,5 +54,14 @@
         <argument
             android:name="domain_id"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/travelFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.travel.TravelFragment"
+        android:label="TravelFragment"
+        tools:layout="@layout/fragment_travel">
+        <argument
+            android:name="countries"
+            app:argType="com.peteralexbizjak.europaopen.api.models.country.CountryModel[]" />
     </fragment>
 </navigation>

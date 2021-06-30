@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,14 +11,14 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginBottom="16dp"
-        android:contentDescription="@string/marker_icon_content_description"
-        android:src="@drawable/ic_place"
-        app:layout_constraintBottom_toTopOf="@+id/fragmentStatisticsLayout"
+        android:contentDescription="@string/fly_content_description"
+        android:src="@drawable/ic_fly"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
-        android:id="@+id/fragmentStatisticsLayout"
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -31,7 +33,7 @@
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/country_from_list"
+            android:text="@string/travel_from_list"
             android:textAlignment="center" />
 
         <TextView
@@ -39,27 +41,59 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="24dp"
-            android:text="@string/country_from_list_description"
+            android:text="@string/travel_from_list_description"
             android:textAlignment="center" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fragmentStatisticsCountryLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+            android:id="@+id/fragmentTravelStartingCountry"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/country"
+            android:hint="@string/starting_country"
             app:layout_goneMarginTop="16dp">
 
             <AutoCompleteTextView
-                android:id="@+id/fragmentStatisticsCountryTextView"
+                android:id="@+id/fragmentTravelStartingCountryAutocomplete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:ignore="LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fragmentTravelDestinationCountry"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/destination_country">
+
+            <AutoCompleteTextView
+                android:id="@+id/fragmentTravelDestinationCountryAutocomplete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fragmentTravelTransitionCountry"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/transition_country">
+
+            <AutoCompleteTextView
+                android:id="@+id/fragmentTravelTransitionCountryAutocomplete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/fragmentStatisticsCheckbox"
+            android:id="@+id/fragmentTravelCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/download_data"
@@ -68,15 +102,15 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/fragmentStatisticsGo"
+        android:id="@+id/fragmentTravelButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/go"
+        android:text="@string/plan_route"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentStatisticsLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
