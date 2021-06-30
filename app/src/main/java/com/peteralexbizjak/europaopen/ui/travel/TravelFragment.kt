@@ -78,10 +78,15 @@ class TravelFragment : Fragment() {
 
             fragmentTravelButton.setOnClickListener {
                 travelViewModel.requestTravelData(
-                    fragmentTravelStartingCountryAutocomplete.text.toString(),
-                    fragmentTravelDestinationCountryAutocomplete.text.toString(),
-                    if (fragmentTravelTransitionCountryAutocomplete.text.isEmpty()) null
-                    else fragmentTravelTransitionCountryAutocomplete.text.toString()
+                    countries
+                        .find { it.longName == fragmentTravelStartingCountryAutocomplete.text.toString() }
+                        ?.shortName ?: "",
+                    countries
+                        .find { it.longName == fragmentTravelDestinationCountryAutocomplete.text.toString() }
+                        ?.shortName ?: "",
+                    countries
+                        .find { it.longName == fragmentTravelTransitionCountryAutocomplete.text.toString() }
+                        ?.shortName
                 )
                 binding.root.findNavController().navigate(R.id.travelInfoFragment)
             }

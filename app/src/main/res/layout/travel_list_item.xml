@@ -16,14 +16,13 @@
 
         <TextView
             android:id="@+id/travelListItemCountry"
-            style="@style/TextAppearance.MaterialComponents.Headline4"
+            style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="8dp"
             android:text="@{countryCode, default=SVN}"
             android:textColor="@color/color_product"
             app:drawableStartCompat="@drawable/ic_location"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

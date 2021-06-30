@@ -38,6 +38,9 @@ class TravelInfoFragment : Fragment() {
                 is GenericResponse.Success -> {
                     binding.apply {
                         fragmentTravelInfoToolbar.visibility = View.VISIBLE
+                        fragmentTravelInfoToolbar.title = it
+                            .data
+                            .joinToString("/") { element -> element.countryCode }
                         fragmentTravelInfoRecyclerView.visibility = View.VISIBLE
                         fragmentTravelInfoProgressBar.visibility = View.GONE
                     }
