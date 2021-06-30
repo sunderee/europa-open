@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.peteralexbizjak.europaopen.databinding.ActivityMainBinding
 import com.peteralexbizjak.europaopen.di.landingModule
 import com.peteralexbizjak.europaopen.di.statisticsModule
+import com.peteralexbizjak.europaopen.di.travelModule
 import com.peteralexbizjak.europaopen.ui.statistics.StatisticsViewModel
+import com.peteralexbizjak.europaopen.ui.travel.TravelViewModel
 import kotlinx.serialization.ExperimentalSerializationApi
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val statisticsViewModel by viewModel<StatisticsViewModel>()
+    private val travelViewModel by viewModel<TravelViewModel>()
 
     @ExperimentalSerializationApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@MainActivity)
-            modules(landingModule, statisticsModule)
+            modules(landingModule, statisticsModule, travelModule)
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)

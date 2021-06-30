@@ -7,12 +7,15 @@ import com.peteralexbizjak.europaopen.api.buildService
 import com.peteralexbizjak.europaopen.api.repositories.ICountryRepository
 import com.peteralexbizjak.europaopen.api.repositories.IMeasureRepository
 import com.peteralexbizjak.europaopen.api.repositories.IRegionRepository
+import com.peteralexbizjak.europaopen.api.repositories.ITravelRepository
 import com.peteralexbizjak.europaopen.api.repositories.implementations.CountryRepository
 import com.peteralexbizjak.europaopen.api.repositories.implementations.MeasureRepository
 import com.peteralexbizjak.europaopen.api.repositories.implementations.RegionRepository
+import com.peteralexbizjak.europaopen.api.repositories.implementations.TravelRepository
 import com.peteralexbizjak.europaopen.api.services.CountryService
 import com.peteralexbizjak.europaopen.api.services.MeasuresService
 import com.peteralexbizjak.europaopen.api.services.RegionService
+import com.peteralexbizjak.europaopen.api.services.TravelService
 import com.peteralexbizjak.europaopen.db.AppDatabase
 import com.peteralexbizjak.europaopen.db.daos.CountryDao
 import com.peteralexbizjak.europaopen.db.daos.DomainDao
@@ -25,6 +28,7 @@ import com.peteralexbizjak.europaopen.db.repositories.implementations.DomainDBRe
 import com.peteralexbizjak.europaopen.db.repositories.implementations.RegionDBRepository
 import com.peteralexbizjak.europaopen.ui.landing.LandingViewModel
 import com.peteralexbizjak.europaopen.ui.statistics.StatisticsViewModel
+import com.peteralexbizjak.europaopen.ui.travel.TravelViewModel
 import kotlinx.serialization.ExperimentalSerializationApi
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -78,4 +82,12 @@ internal val statisticsModule = module(override = true) {
             domainDBRepository = get()
         )
     }
+}
+
+@ExperimentalSerializationApi
+internal val travelModule = module(override = true) {
+    single { buildService(retrofitInstance, TravelService::class.java) }
+    single<ITravelRepository> { TravelRepository(service = get()) }
+
+    viewModel { TravelViewModel(travelRepository = get()) }
 }

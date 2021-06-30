@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.peteralexbizjak.europaopen.R
 import com.peteralexbizjak.europaopen.api.models.country.CountryModel
 import com.peteralexbizjak.europaopen.databinding.FragmentTravelBinding
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 @Suppress("UNCHECKED_CAST")
 class TravelFragment : Fragment() {
@@ -16,6 +18,7 @@ class TravelFragment : Fragment() {
     private val binding get() = bindingInstance!!
 
     private lateinit var countries: Array<CountryModel>
+    private val travelViewModel by sharedViewModel<TravelViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,10 +72,18 @@ class TravelFragment : Fragment() {
                 )
             )
 
-            fragmentTravelCheckbox.setOnCheckedChangeListener { _, isChecked -> }
+            fragmentTravelCheckbox.setOnCheckedChangeListener { _, _ ->
+                // TODO: I'm too lazy to work on local caching right meow
+            }
 
             fragmentTravelButton.setOnClickListener {
-                // TODO: request info
+                travelViewModel.requestTravelData(
+                    fragmentTravelStartingCountryAutocomplete.text.toString(),
+                    fragmentTravelDestinationCountryAutocomplete.text.toString(),
+                    if (fragmentTravelTransitionCountryAutocomplete.text.isEmpty()) null
+                    else fragmentTravelTransitionCountryAutocomplete.text.toString()
+                )
+                binding.root.findNavController().navigate(R.id.travelInfoFragment)
             }
         }
     }

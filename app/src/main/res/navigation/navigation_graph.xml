@@ -63,5 +63,13 @@
         <argument
             android:name="countries"
             app:argType="com.peteralexbizjak.europaopen.api.models.country.CountryModel[]" />
+        <action
+            android:id="@+id/action_travelFragment_to_travelInfoFragment"
+            app:destination="@id/travelInfoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/travelInfoFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.travel.TravelInfoFragment"
+        android:label="TravelInfoFragment"
+        tools:layout="@layout/fragment_travel_info" />
 </navigation>
