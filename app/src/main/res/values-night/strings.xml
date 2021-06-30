@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Europa Open</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.</string>
+    <string name="bullet">•</string>
+
+    <string name="landing_title">Explore the world</string>
+    <string name="landing_subtitle">Today, tourist destinations are opening up again, people are getting vaccinated and life is returning to normal</string>
+    <string name="actions">What can you do</string>
+    <string name="travel">Travel</string>
+    <string name="travel_description">Planning your trip will require navigation around various travel restrictions</string>
+    <string name="open_content_description">Icon with a sign that says open</string>
+    <string name="fly_content_description">Icon of an airplane taking off</string>
+    <string name="request_travel_info">Request travel info</string>
+    <string name="stats">Statistics</string>
+    <string name="stats_description">Retrieve detailed information on measures in place for a selected country</string>
+    <string name="retrieve_statistics">Obtain data</string>
+    <string name="about_app">Info</string>
+    <string name="code">Open source</string>
+    <string name="code_description">We are committed to the open source, learn where you can contribute yourself</string>
+    <string name="code_content_description">HTML-like icon representing coding</string>
+    <string name="feedback">Feedback</string>
+    <string name="feedback_description">We would love to hear from you and what you think about the app. Contact developers directly.</string>
+    <string name="feedback_content_description">Message and pen icon</string>
+    <string name="submit_feedback">Submit feedback</string>
+    <string name="country">Country</string>
+    <string name="country_from_list">Country data</string>
+    <string name="country_from_list_description">Select country from the list. You can also opt in on downloading data for later use</string>
+    <string name="download_data">Download data for offline retrieval</string>
+    <string name="go">Go</string>
+    <string name="stats_for_country">Statistics for country</string>
+    <string name="stats_info_description">Access stats per region, find about travel restrictions, countermeasures, health info and other information</string>
+    <string name="per_region">Statistics per region</string>
+    <string name="region">Regions</string>
+    <string name="region_description">Country regions and their respective color codes</string>
+    <string name="region_state_content_description">Icon representing regions in a state</string>
+    <string name="more_info">More info</string>
+    <string name="travel_description_second">All necessary travel info when planning your new adventure</string>
+    <string name="hiking_content_description">Image representing a person hiking to mountains</string>
+    <string name="covid_measures">Coronavirus Measures</string>
+    <string name="covid_measures_description">What are the state measures when it comes to fighting Covid pandemic?</string>
+    <string name="health_situation">Health Situation</string>
+    <string name="health_situation_description">Current health situation in the country and where to look for medical help</string>
+    <string name="covid_content_description">Image representing the Covid-19, also known as coronavirus</string>
+    <string name="more_info_description">Information not otherwise available above</string>
+    <string name="marker_icon_content_description">Image containing a location marker being placed on a straight plane</string>
+    <string name="travel_from_list">Plan your route</string>
+    <string name="travel_from_list_description">Select starting, destination and (optionally) transit country and get ready before boarding your flight</string>
+    <string name="starting_country">Starting country</string>
+    <string name="destination_country">Destination country</string>
+    <string name="transition_country">(Optional) transient country</string>
+    <string name="plan_route">Plan route</string>
+</resources>

@@ -2,29 +2,23 @@ package com.peteralexbizjak.europaopen.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.peteralexbizjak.europaopen.api.models.travel.TravelModel
 import com.peteralexbizjak.europaopen.databinding.TravelListItemBinding
-import com.peteralexbizjak.europaopen.ui.TravelFragmentDirections
 
-internal class TravelAdapter : RecyclerView.Adapter<TravelAdapter.ViewHolder>() {
-    private val travelData = mutableListOf<TravelModel>()
-
+internal class TravelAdapter(
+    private val travelList: List<TravelModel>
+) : RecyclerView.Adapter<TravelAdapter.ViewHolder>() {
     internal class ViewHolder(
         private val binding: TravelListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(travelModel: TravelModel) {
-            binding.country = travelModel.countryCode
-            binding.root.setOnClickListener {
-                it.findNavController()
-                    .navigate(
-                        TravelFragmentDirections.actionTravelFragmentToTravelInfoFragment(
-                            travelModel.data.first()
-                        )
-                    )
+            binding.countryCode = travelModel.countryCode
+            binding.travelListItemRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = TravelSubAdapter(travelModel.data)
             }
-            binding.executePendingBindings()
         }
     }
 
@@ -35,15 +29,7 @@ internal class TravelAdapter : RecyclerView.Adapter<TravelAdapter.ViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(travelData[position])
+        holder.bind(travelList[position])
 
-    override fun getItemCount(): Int = travelData.size
-
-    fun setNewData(newData: List<TravelModel>) {
-        notifyDataSetChanged()
-        travelData.apply {
-            clear()
-            addAll(newData)
-        }
-    }
+    override fun getItemCount(): Int = travelList.size
 }

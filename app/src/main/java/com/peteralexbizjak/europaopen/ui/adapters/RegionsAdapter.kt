@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.peteralexbizjak.europaopen.api.models.region.RegionModel
 import com.peteralexbizjak.europaopen.databinding.RegionListItemBinding
 
-
 internal class RegionsAdapter : RecyclerView.Adapter<RegionsAdapter.ViewHolder>() {
     private val regionData = mutableListOf<RegionModel>()
 

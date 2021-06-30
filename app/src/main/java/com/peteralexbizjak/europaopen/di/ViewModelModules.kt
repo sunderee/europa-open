@@ -18,11 +18,18 @@ import com.peteralexbizjak.europaopen.api.services.RegionService
 import com.peteralexbizjak.europaopen.api.services.TravelService
 import com.peteralexbizjak.europaopen.db.AppDatabase
 import com.peteralexbizjak.europaopen.db.daos.CountryDao
+import com.peteralexbizjak.europaopen.db.daos.DomainDao
+import com.peteralexbizjak.europaopen.db.daos.RegionDao
 import com.peteralexbizjak.europaopen.db.repositories.ICountryDBRepository
+import com.peteralexbizjak.europaopen.db.repositories.IDomainDBRepository
+import com.peteralexbizjak.europaopen.db.repositories.IRegionDBRepository
 import com.peteralexbizjak.europaopen.db.repositories.implementations.CountryDBRepository
-import com.peteralexbizjak.europaopen.ui.viewmodels.CountryViewModel
-import com.peteralexbizjak.europaopen.ui.viewmodels.MeasuresViewModel
-import com.peteralexbizjak.europaopen.ui.viewmodels.TravelViewModel
+import com.peteralexbizjak.europaopen.db.repositories.implementations.DomainDBRepository
+import com.peteralexbizjak.europaopen.db.repositories.implementations.RegionDBRepository
+import com.peteralexbizjak.europaopen.ui.landing.LandingViewModel
+import com.peteralexbizjak.europaopen.ui.statistics.StatisticsViewModel
+import com.peteralexbizjak.europaopen.ui.travel.TravelViewModel
+import kotlinx.serialization.ExperimentalSerializationApi
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -35,10 +42,14 @@ private fun getDatabaseInstance(context: Context): AppDatabase = Room
     .build()
 
 private fun provideCountryDAO(database: AppDatabase): CountryDao = database.countryDao()
+private fun provideRegionDAO(database: AppDatabase): RegionDao = database.regionDao()
+private fun provideDomainDAO(database: AppDatabase): DomainDao = database.domainDao()
 
+@ExperimentalSerializationApi
 private val retrofitInstance = buildRetrofit()
 
-internal val countriesViewModelModule = module {
+@ExperimentalSerializationApi
+internal val landingModule = module {
     single { buildService(retrofitInstance, CountryService::class.java) }
     single<ICountryRepository> { CountryRepository(service = get()) }
 
@@ -46,22 +57,37 @@ internal val countriesViewModelModule = module {
     single { provideCountryDAO(database = get()) }
     single<ICountryDBRepository> { CountryDBRepository(countryDAO = get()) }
 
-    viewModel { CountryViewModel(apiRepository = get(), databaseRepository = get()) }
+    viewModel { LandingViewModel(apiRepository = get(), databaseRepository = get()) }
 }
 
-internal val measuresViewModelModule = module {
+@ExperimentalSerializationApi
+internal val statisticsModule = module(override = true) {
     single { buildService(retrofitInstance, MeasuresService::class.java) }
     single<IMeasureRepository> { MeasureRepository(service = get()) }
 
     single { buildService(retrofitInstance, RegionService::class.java) }
     single<IRegionRepository> { RegionRepository(service = get()) }
 
-    viewModel { MeasuresViewModel(measureRepository = get(), regionRepository = get()) }
+    single { getDatabaseInstance(androidContext()) }
+    single { provideRegionDAO(database = get()) }
+    single { provideDomainDAO(database = get()) }
+    single<IRegionDBRepository> { RegionDBRepository(regionDao = get()) }
+    single<IDomainDBRepository> { DomainDBRepository(domainDao = get()) }
+
+    viewModel {
+        StatisticsViewModel(
+            measureRepository = get(),
+            regionRepository = get(),
+            regionDBRepository = get(),
+            domainDBRepository = get()
+        )
+    }
 }
 
-internal val travelViewModelModule = module {
+@ExperimentalSerializationApi
+internal val travelModule = module(override = true) {
     single { buildService(retrofitInstance, TravelService::class.java) }
     single<ITravelRepository> { TravelRepository(service = get()) }
 
-    viewModel { TravelViewModel(repository = get()) }
+    viewModel { TravelViewModel(travelRepository = get()) }
 }

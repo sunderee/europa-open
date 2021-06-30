@@ -6,6 +6,7 @@ import com.peteralexbizjak.europaopen.api.repositories.IMeasureRepository
 import com.peteralexbizjak.europaopen.api.repositories.implementations.MeasureRepository
 import com.peteralexbizjak.europaopen.api.services.MeasuresService
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.ExperimentalSerializationApi
 import org.junit.Test
 import org.koin.dsl.module
 import org.koin.test.KoinTest
@@ -13,7 +14,8 @@ import org.koin.test.KoinTestRule
 import org.koin.test.inject
 import kotlin.test.assertTrue
 
-class MeasuresViewModelUnitTest : KoinTest {
+@ExperimentalSerializationApi
+internal class MeasuresViewModelUnitTest : KoinTest {
     private data class Rule(
         val title: String,
         val comment: String

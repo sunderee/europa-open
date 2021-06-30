@@ -3,102 +3,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph.xml"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/landingFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.peteralexbizjak.europaopen.ui.MainFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_main">
+        android:id="@+id/landingFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.landing.LandingFragment"
+        android:label="Europa Open"
+        tools:layout="@layout/fragment_landing">
         <action
-            android:id="@+id/action_mainFragment_to_measuresFragment"
-            app:destination="@id/measuresFragment" />
+            android:id="@+id/action_landingFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_travelFragment"
+            android:id="@+id/action_landingFragment_to_travelFragment"
             app:destination="@id/travelFragment" />
     </fragment>
     <fragment
-        android:id="@+id/measuresFragment"
-        android:name="com.peteralexbizjak.europaopen.ui.MeasuresFragment"
-        android:label="{country}"
-        tools:layout="@layout/fragment_measures">
+        android:id="@+id/statisticsFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.statistics.StatisticsFragment"
+        tools:layout="@layout/fragment_statistics">
         <argument
-            android:name="country"
-            app:argType="string" />
-        <argument
-            android:name="code"
-            app:argType="string" />
+            android:name="countries"
+            app:argType="com.peteralexbizjak.europaopen.api.models.country.CountryModel[]" />
         <action
-            android:id="@+id/action_measuresFragment_to_measuresInfoFragment"
-            app:destination="@id/measuresInfoFragment" />
+            android:id="@+id/action_statisticsFragment_to_statisticsInfoFragment"
+            app:destination="@id/statisticsInfoFragment" />
     </fragment>
     <fragment
-        android:id="@+id/measuresInfoFragment"
-        android:name="com.peteralexbizjak.europaopen.ui.MeasuresInfoFragment"
-        android:label="{domainName}"
-        tools:layout="@layout/fragment_measures_info">
+        android:id="@+id/statisticsInfoFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.statistics.StatisticsInfoFragment"
+        android:label="StatisticsInfoFragment"
+        tools:layout="@layout/fragment_statistics_info">
         <argument
             android:name="country"
             app:argType="string" />
-        <argument
-            android:name="code"
-            app:argType="string" />
+        <action
+            android:id="@+id/action_statisticsInfoFragment_to_landingFragment"
+            app:destination="@id/landingFragment" />
+        <action
+            android:id="@+id/action_statisticsInfoFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.peteralexbizjak.europaopen.ui.statistics.info.InfoFragment"
+        android:label="{domain}"
+        tools:layout="@layout/fragment_info">
         <argument
             android:name="domain"
+            app:argType="string" />
+        <argument
+            android:name="domain_id"
             app:argType="integer" />
-        <argument
-            android:name="domainName"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_measuresInfoFragment_to_ruleFragment"
-            app:destination="@id/ruleFragment" />
-        <action
-            android:id="@+id/action_measuresInfoFragment_to_ruleSingleFragment"
-            app:destination="@id/ruleSingleFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/ruleFragment"
-        android:name="com.peteralexbizjak.europaopen.ui.RuleFragment"
-        android:label="Info">
-        <argument
-            android:name="rules"
-            android:defaultValue="@null"
-            app:argType="com.peteralexbizjak.europaopen.ui.viewmodels.models.parcelable.Rule[]"
-            app:nullable="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/ruleSingleFragment"
-        android:name="com.peteralexbizjak.europaopen.ui.RuleSingleFragment"
-        android:label="Info"
-        tools:layout="@layout/fragment_rule_single">
-        <argument
-            android:name="title"
-            app:argType="string" />
-        <argument
-            android:name="contents"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/travelFragment"
-        android:name="com.peteralexbizjak.europaopen.ui.TravelFragment"
-        android:label="Travel info"
+        android:name="com.peteralexbizjak.europaopen.ui.travel.TravelFragment"
+        android:label="TravelFragment"
         tools:layout="@layout/fragment_travel">
+        <argument
+            android:name="countries"
+            app:argType="com.peteralexbizjak.europaopen.api.models.country.CountryModel[]" />
         <action
             android:id="@+id/action_travelFragment_to_travelInfoFragment"
             app:destination="@id/travelInfoFragment" />
-        <argument
-            android:name="destination"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/travelInfoFragment"
-        android:name="com.peteralexbizjak.europaopen.ui.TravelInfoFragment"
-        android:label="Country info"
-        tools:layout="@layout/fragment_travel_info">
-        <argument
-            android:name="travelInfo"
-            android:defaultValue="@null"
-            app:argType="com.peteralexbizjak.europaopen.api.models.measures.IndicatorModel"
-            app:nullable="true" />
-    </fragment>
+        android:name="com.peteralexbizjak.europaopen.ui.travel.TravelInfoFragment"
+        android:label="TravelInfoFragment"
+        tools:layout="@layout/fragment_travel_info" />
 </navigation>
