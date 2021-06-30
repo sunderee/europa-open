@@ -8,7 +8,7 @@ Motivation for the app development comes from the lack of similar solutions.
 
 ### Usage
 
-This is a native Android project, with minimum SDK version 26 and target SDK version 30. Simply clone
+This is a native Android project, with minimum SDK version 23 and target SDK version 30. Simply clone
 the project and open it in Android Studio.
 
 ### I want to contribute
