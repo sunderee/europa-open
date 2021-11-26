@@ -1,3 +1,4 @@
+import 'package:europaopen/ui/screens/pages/location.page.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,6 +8,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: SafeArea(
+        minimum: const EdgeInsets.all(16.0),
+        child: LocationPage(),
+      ),
+    );
   }
 }

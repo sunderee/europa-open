@@ -1,3 +1,4 @@
+import 'package:europaopen/ui/screens/home.screen.dart';
 import 'package:europaopen/ui/themes/app.theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
     );
     return MaterialApp(
       theme: AppTheme.lightTheme,
+      home: HomeScreen(),
     );
   }
 }
