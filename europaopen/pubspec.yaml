@@ -11,10 +11,20 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Local persistence
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+
+  # Code quality
+  meta: ^1.7.0
+  equatable: ^2.0.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.4
+  hive_generator: ^1.1.1
+  build_runner: ^2.1.5
 
 flutter:
   uses-material-design: true
