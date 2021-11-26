@@ -32,21 +32,17 @@ class LocationPage extends StatelessWidget {
           const SizedBox(height: 16.0),
           FormField(
             builder: (FormFieldState<String> state) {
-              return InputDecorator(
-                  decoration: InputDecoration(
-                    hintText: 'Select country',
-                  ),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton<String>(
+              return DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  value: 'Slovenia',
+                  items: [
+                    DropdownMenuItem<String>(
                       value: 'Slovenia',
-                      items: [
-                        DropdownMenuItem<String>(
-                          value: 'Slovenia',
-                          child: Text('Slovenia'),
-                        ),
-                      ],
+                      child: Text('Slovenia'),
                     ),
-                  ));
+                  ],
+                ),
+              );
             },
           ),
         ],
