@@ -2,7 +2,7 @@ name: europaopen
 description: Helping travelers inside the European Region navigate Covid travel restrictions
 
 publish_to: "none"
-version: 1.0.0+4
+version: 1.0.1+7
 
 environment:
   sdk: ">=2.14.4 <3.0.0"

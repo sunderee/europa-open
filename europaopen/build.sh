@@ -12,5 +12,5 @@ flutter pub get
 flutter packages pub run build_runner build --delete-conflicting-outputs
 
 debug_print "Building Android's App Bundle & APK..."
-flutter build appbundle --obfuscate --split-debug-info=./debug
-flutter build apk --obfuscate --split-debug-info=./debug
+flutter build appbundle
+flutter build apk
