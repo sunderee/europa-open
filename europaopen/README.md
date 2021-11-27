@@ -1,6 +1,6 @@
 # EuropaOpen Flutter
 
-Lightweight, native Android application for helping travelers inside the European Region navigate travel restrictions.
+Lightweight, cross-platform Flutter-based application for helping travelers inside the European Region navigate travel restrictions.
 
 ## Usage
 

@@ -1,15 +1,14 @@
 # Europa Open
 
-Native Android app which helps travelers in the European Region navigate various travel
-restrictions. Data is pulled from [Reopen Europa API](https://reopen.europa.eu/en). You can view my
-reversed-engineered API [in Postman](https://documenter.getpostman.com/view/10485728/TzeTKVR4).
+This project contains the source to the "old" native Android version of the app, as well as the current 1.0.0 version that is Flutter-based. From now on, only the Flutter version will receive future development, but I'm keeping the native Android codebase for educational and historic purposes.
 
-Motivation for the app development comes from the lack of similar solutions.
+EuropaOpen is a cross-platform mobile application which helps travelers in the European Region to navigate various restrictions and obtain important information before embarking on a journey. Data is pulled from [Reopen Europa API](https://reopen.europa.eu/en). You can view my reversed-engineered API [in Postman](https://documenter.getpostman.com/view/10485728/TzeTKVR4).
 
 ### Usage
 
-This is a native Android project, with minimum SDK version 23 and target SDK version 30. Simply clone
-the project and open it in Android Studio.
+Clone the repository. Make sure you have Android Studio (or at least the Android SDK). For the Flutter application, make sure to have the latest stable version of Flutter toolkit installed on your system.
+
+Flutter application is located under `europaopen` directory.
 
 ### I want to contribute
 
@@ -18,6 +17,6 @@ information.
 
 ## License & Availability
 
-Project is open sourced under the MIT license. App is published on Google Play Store, currently in the open testing phase.
+Project is open sourced under the MIT license. App is published on Google Play Store.
 
 [<img src="./store.svg">](https://play.google.com/store/apps/details?id=com.peteralexbizjak.europaopen)
