@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:europaopen/utils/extensions/string.ext.dart';
 import 'package:meta/meta.dart';
 
 @immutable
@@ -32,22 +33,3 @@ class RegionModel extends Equatable {
 }
 
 enum RegionColor { darkRed, red, orange, green, noData }
-
-extension RegionColorExt on String {
-  RegionColor fromString() {
-    switch (this) {
-      case 'darkred':
-        return RegionColor.darkRed;
-      case 'red':
-        return RegionColor.red;
-      case 'orange':
-        return RegionColor.orange;
-      case 'green':
-        return RegionColor.green;
-      case 'nodata':
-        return RegionColor.noData;
-      default:
-        return RegionColor.noData;
-    }
-  }
-}

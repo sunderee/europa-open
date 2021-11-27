@@ -2,6 +2,9 @@ import 'package:europaopen/data/api.provider.dart';
 import 'package:europaopen/data/cache.provider.dart';
 import 'package:europaopen/data/models/countries/country.model.dart';
 import 'package:europaopen/data/repositories/country.repository.dart';
+import 'package:europaopen/data/repositories/domain.repository.dart';
+import 'package:europaopen/data/repositories/region.repository.dart';
+import 'package:europaopen/data/repositories/rule.repository.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class AppDependencies {
@@ -19,6 +22,18 @@ class AppDependencies {
     CacheProvider<CountryModel> cacheProvider,
   ) {
     return CountryRepository(apiProvider, cacheProvider);
+  }
+
+  static IRegionRepository regionRepositoryInstance(ApiProvider apiProvider) {
+    return RegionRepository(apiProvider);
+  }
+
+  static IDomainRepository domainRepositoryInstance(ApiProvider apiProvider) {
+    return DomainRepository(apiProvider);
+  }
+
+  static IRuleRepository ruleRepositoryInstance(ApiProvider apiProvider) {
+    return RuleRepository(apiProvider);
   }
 
   const AppDependencies._();

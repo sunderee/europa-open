@@ -1,12 +1,13 @@
+import 'package:europaopen/app.router.dart';
 import 'package:europaopen/blocs/country/country.cubit.dart';
 import 'package:europaopen/blocs/country/country.state.dart';
+import 'package:europaopen/blocs/info/info.cubit.dart';
 import 'package:europaopen/blocs/status.dart';
 import 'package:europaopen/data/models/countries/country.model.dart';
 import 'package:europaopen/ui/screens/pages/location.page.dart';
 import 'package:europaopen/ui/screens/pages/travel.page.dart';
 import 'package:europaopen/ui/widgets/error_container.widget.dart';
 import 'package:europaopen/ui/widgets/loading_container.widget.dart';
-import 'package:europaopen/utils/tuple.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,10 +15,12 @@ class HomeScreen extends StatelessWidget {
   static const String routeName = '/';
 
   final CountryCubit countryCubit;
+  final InfoCubit infoCubit;
 
   const HomeScreen({
     Key? key,
     required this.countryCubit,
+    required this.infoCubit,
   }) : super(key: key);
 
   @override
@@ -36,7 +39,10 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   LocationPage(
                     countries: state.data ?? <CountryModel>[],
-                    onCountrySelected: (CountryModel country) {},
+                    onCountrySelected: (CountryModel country) {
+                      infoCubit.retrieveInfoForCountry(country.code);
+                      AppRouter.navigateToInfoScreen(context);
+                    },
                   ),
                   TravelPage(
                     countries: state.data ?? <CountryModel>[],

@@ -1,4 +1,5 @@
 import 'package:europaopen/blocs/country/country.cubit.dart';
+import 'package:europaopen/blocs/info/info.cubit.dart';
 import 'package:europaopen/ui/screens/home.screen.dart';
 import 'package:europaopen/ui/screens/info.screen.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +12,12 @@ class AppRouter {
     HomeScreen.routeName: (BuildContext context) => HomeScreen(
           countryCubit: BlocProvider.of<CountryCubit>(context)
             ..requestCountries(),
+          infoCubit: BlocProvider.of<InfoCubit>(context),
         ),
     InfoScreen.routeName: (BuildContext context) => const InfoScreen(),
   };
 
-  void navigateToInfoScreen(BuildContext context) {
+  static void navigateToInfoScreen(BuildContext context) {
     Navigator.pushNamed(context, InfoScreen.routeName);
   }
 

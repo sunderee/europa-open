@@ -44,8 +44,8 @@ class InfoState extends Equatable {
   List<Object?> get props => [
         status,
         List<RegionModel>.from(regionsData ?? <RegionModel>[]),
-        List<DomainModel>.from(regionsData ?? <DomainModel>[]),
-        List<RuleModel>.from(regionsData ?? <RuleModel>[]),
+        List<DomainModel>.from(domainsData ?? <DomainModel>[]),
+        List<RuleModel>.from(domainRulesData ?? <RuleModel>[]),
         errorMessage
       ];
 }

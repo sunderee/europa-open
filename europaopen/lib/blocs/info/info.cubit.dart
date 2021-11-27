@@ -36,8 +36,9 @@ class InfoCubit extends Cubit<InfoState> {
       emit(InfoState.successful(regions, domains, domainRules));
     } on ApiException catch (exception) {
       emit(InfoState.failed(exception.toString()));
-    } catch (_) {
-      emit(InfoState.failed('Unknown error'));
     }
+    // } catch (_) {
+    //   emit(InfoState.failed('Unknown error'));
+    // }
   }
 }
