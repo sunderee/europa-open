@@ -1,8 +1,10 @@
 import 'package:europaopen/blocs/country/country.cubit.dart';
 import 'package:europaopen/blocs/info/info.cubit.dart';
+import 'package:europaopen/blocs/travel/travel.cubit.dart';
 import 'package:europaopen/ui/screens/home.screen.dart';
-import 'package:europaopen/ui/screens/info.screen.dart';
-import 'package:europaopen/ui/screens/info_details.screen.dart';
+import 'package:europaopen/ui/screens/info/info.screen.dart';
+import 'package:europaopen/ui/screens/info/info_details.screen.dart';
+import 'package:europaopen/ui/screens/travel/travel.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,14 +16,19 @@ class AppRouter {
           countryCubit: BlocProvider.of<CountryCubit>(context)
             ..requestCountries(),
           infoCubit: BlocProvider.of<InfoCubit>(context),
+          travelCubit: BlocProvider.of<TravelCubit>(context),
         ),
     InfoScreen.routeName: (BuildContext context) => const InfoScreen(),
     InfoDetailsScreen.routeName: (BuildContext context) =>
         const InfoDetailsScreen(),
+    TravelScreen.routeName: (BuildContext context) => const TravelScreen(),
   };
 
   static void navigateToInfoScreen(BuildContext context) {
-    Navigator.pushNamed(context, InfoScreen.routeName);
+    Navigator.pushNamed(
+      context,
+      InfoScreen.routeName,
+    );
   }
 
   static void navigateToInfoDetailsScreen(
@@ -32,6 +39,13 @@ class AppRouter {
       context,
       InfoDetailsScreen.routeName,
       arguments: arguments,
+    );
+  }
+
+  static void navigateToTravelScreen(BuildContext context) {
+    Navigator.pushNamed(
+      context,
+      TravelScreen.routeName,
     );
   }
 

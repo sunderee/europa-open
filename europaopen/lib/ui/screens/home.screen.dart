@@ -3,6 +3,7 @@ import 'package:europaopen/blocs/country/country.cubit.dart';
 import 'package:europaopen/blocs/country/country.state.dart';
 import 'package:europaopen/blocs/info/info.cubit.dart';
 import 'package:europaopen/blocs/status.dart';
+import 'package:europaopen/blocs/travel/travel.cubit.dart';
 import 'package:europaopen/data/models/countries/country.model.dart';
 import 'package:europaopen/ui/screens/pages/location.page.dart';
 import 'package:europaopen/ui/screens/pages/travel.page.dart';
@@ -16,11 +17,13 @@ class HomeScreen extends StatelessWidget {
 
   final CountryCubit countryCubit;
   final InfoCubit infoCubit;
+  final TravelCubit travelCubit;
 
   const HomeScreen({
     Key? key,
     required this.countryCubit,
     required this.infoCubit,
+    required this.travelCubit,
   }) : super(key: key);
 
   @override
@@ -59,7 +62,20 @@ class HomeScreen extends StatelessWidget {
                       CountryModel staringCountry,
                       CountryModel destinationCountry,
                       CountryModel? transitCountry,
-                    ) {},
+                    ) {
+                      if (transitCountry != null) {
+                        travelCubit.retrieveTravelInfoWithTransit(
+                          staringCountry.code,
+                          destinationCountry.code,
+                          transitCountry.code,
+                        );
+                      } else {
+                        travelCubit.retrieveTravelInfo(
+                          staringCountry.code,
+                          destinationCountry.code,
+                        );
+                      }
+                    },
                   ),
                 ],
               );

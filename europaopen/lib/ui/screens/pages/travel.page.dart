@@ -1,3 +1,4 @@
+import 'package:europaopen/app.router.dart';
 import 'package:europaopen/data/models/countries/country.model.dart';
 import 'package:europaopen/ui/themes/color.theme.dart';
 import 'package:europaopen/utils/extensions/context.ext.dart';
@@ -146,6 +147,8 @@ class _TravelPageState extends State<TravelPage> {
                   _destinationCountry!,
                   _transitCountry,
                 );
+                AppRouter.navigateToTravelScreen(context);
+                return;
               }
               context.displaySnackBar(
                 'Starting and destination countries must be selected',

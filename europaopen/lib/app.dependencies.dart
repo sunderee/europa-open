@@ -5,6 +5,7 @@ import 'package:europaopen/data/repositories/country.repository.dart';
 import 'package:europaopen/data/repositories/domain.repository.dart';
 import 'package:europaopen/data/repositories/region.repository.dart';
 import 'package:europaopen/data/repositories/rule.repository.dart';
+import 'package:europaopen/data/repositories/travel.repository.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class AppDependencies {
@@ -34,6 +35,10 @@ class AppDependencies {
 
   static IRuleRepository ruleRepositoryInstance(ApiProvider apiProvider) {
     return RuleRepository(apiProvider);
+  }
+
+  static ITravelRepository travelRepositoryInstance(ApiProvider apiProvider) {
+    return TravelRepository(apiProvider);
   }
 
   const AppDependencies._();

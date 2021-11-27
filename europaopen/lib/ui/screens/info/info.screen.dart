@@ -5,7 +5,7 @@ import 'package:europaopen/blocs/status.dart';
 import 'package:europaopen/data/models/domains/domain.model.dart';
 import 'package:europaopen/data/models/regions/region.model.dart';
 import 'package:europaopen/data/models/rules/rule.model.dart';
-import 'package:europaopen/ui/screens/info_details.screen.dart';
+import 'package:europaopen/ui/screens/info/info_details.screen.dart';
 import 'package:europaopen/ui/themes/color.theme.dart';
 import 'package:europaopen/ui/widgets/error_container.widget.dart';
 import 'package:europaopen/ui/widgets/loading_container.widget.dart';
