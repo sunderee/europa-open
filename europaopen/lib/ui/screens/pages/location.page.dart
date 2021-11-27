@@ -45,23 +45,29 @@ class _LocationPageState extends State<LocationPage> {
           const SizedBox(height: 16.0),
           FormField(
             builder: (FormFieldState<CountryModel> state) {
-              return DropdownButtonHideUnderline(
-                child: DropdownButton<CountryModel>(
-                  value: _selectedCountry ?? widget.countries.first,
-                  items: widget.countries
-                      .map(
-                        (CountryModel country) =>
-                            DropdownMenuItem<CountryModel>(
-                          value: country,
-                          child: Text(country.name),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (CountryModel? newSelectedCountry) {
-                    if (newSelectedCountry != null) {
-                      setState(() => _selectedCountry = newSelectedCountry);
-                    }
-                  },
+              return InputDecorator(
+                decoration: const InputDecoration(
+                  labelText: 'Select country',
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<CountryModel>(
+                    isDense: true,
+                    value: _selectedCountry ?? widget.countries.first,
+                    items: widget.countries
+                        .map(
+                          (CountryModel country) =>
+                              DropdownMenuItem<CountryModel>(
+                            value: country,
+                            child: Text(country.name),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (CountryModel? newSelectedCountry) {
+                      if (newSelectedCountry != null) {
+                        setState(() => _selectedCountry = newSelectedCountry);
+                      }
+                    },
+                  ),
                 ),
               );
             },

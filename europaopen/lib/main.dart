@@ -12,6 +12,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 Future<void> main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<CountryModel>(CountryModelAdapter());
+  Hive.registerAdapter<CountryDirection>(CountryDirectionAdapter());
   await Hive.openBox<CountryModel>(CacheProvider.countryBoxName);
 
   runApp(
