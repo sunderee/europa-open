@@ -55,6 +55,7 @@ Future<List<CountryModel>> _retrieveCountriesIsolate(
 }
 
 abstract class ICountryRepository {
+  Future<List<CountryModel>> retrieveAllCountries();
   Future<List<CountryModel>> retrieveCountries(CountryDirection direction);
 }
 
@@ -67,6 +68,23 @@ class CountryRepository implements ICountryRepository {
     CacheProvider<CountryModel> cacheProvider,
   )   : _provider = apiProvider,
         _cacheProvider = cacheProvider;
+
+  @override
+  Future<List<CountryModel>> retrieveAllCountries() async {
+    if (_cacheProvider.isEmpty()) {
+      final countries = await compute<ApiProvider, List<CountryModel>>(
+        _retrieveCountriesIsolate,
+        _provider,
+      );
+      for (var element in countries) {
+        await _cacheProvider.insert(element);
+      }
+
+      return countries;
+    }
+
+    return _cacheProvider.readAll().toList();
+  }
 
   @override
   Future<List<CountryModel>> retrieveCountries(
