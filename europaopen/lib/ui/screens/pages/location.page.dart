@@ -1,13 +1,16 @@
 import 'package:europaopen/data/models/countries/country.model.dart';
 import 'package:europaopen/ui/themes/color.theme.dart';
+import 'package:europaopen/utils/extensions/context.ext.dart';
 import 'package:flutter/material.dart';
 
 class LocationPage extends StatefulWidget {
   final List<CountryModel> countries;
+  final Function(CountryModel) onCountrySelected;
 
   const LocationPage({
     Key? key,
     required this.countries,
+    required this.onCountrySelected,
   }) : super(key: key);
 
   @override
@@ -37,6 +40,7 @@ class _LocationPageState extends State<LocationPage> {
             ),
             textAlign: TextAlign.center,
           ),
+          const SizedBox(height: 4.0),
           Text(
             'Fetch Covid-related info for a country of choice',
             style: Typography.englishLike2018.bodyText1,
@@ -45,31 +49,44 @@ class _LocationPageState extends State<LocationPage> {
           const SizedBox(height: 16.0),
           FormField(
             builder: (FormFieldState<CountryModel> state) {
-              return InputDecorator(
-                decoration: const InputDecoration(
-                  labelText: 'Select country',
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<CountryModel>(
-                    isDense: true,
-                    value: _selectedCountry ?? widget.countries.first,
-                    items: widget.countries
-                        .map(
-                          (CountryModel country) =>
-                              DropdownMenuItem<CountryModel>(
-                            value: country,
-                            child: Text(country.name),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: (CountryModel? newSelectedCountry) {
-                      if (newSelectedCountry != null) {
-                        setState(() => _selectedCountry = newSelectedCountry);
-                      }
-                    },
-                  ),
+              return DropdownButtonHideUnderline(
+                child: DropdownButton<CountryModel>(
+                  isDense: true,
+                  value: _selectedCountry,
+                  items: widget.countries
+                      .map(
+                        (CountryModel country) =>
+                            DropdownMenuItem<CountryModel>(
+                          value: country,
+                          child: Text(country.name),
+                        ),
+                      )
+                      .toList(),
+                  hint: const Text('Select a country'),
+                  onChanged: (CountryModel? newSelectedCountry) {
+                    if (newSelectedCountry != null) {
+                      setState(() => _selectedCountry = newSelectedCountry);
+                    }
+                  },
                 ),
               );
+            },
+          ),
+          const SizedBox(height: 16.0),
+          MaterialButton(
+            color: ColorTheme.colorProduct,
+            child: Text(
+              'Continue'.toUpperCase(),
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onPressed: () {
+              if (_selectedCountry != null) {
+                widget.onCountrySelected(_selectedCountry!);
+                return;
+              }
+              context.displaySnackBar('Select a country');
             },
           ),
         ],

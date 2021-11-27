@@ -6,6 +6,7 @@ import 'package:europaopen/ui/screens/pages/location.page.dart';
 import 'package:europaopen/ui/screens/pages/travel.page.dart';
 import 'package:europaopen/ui/widgets/error_container.widget.dart';
 import 'package:europaopen/ui/widgets/loading_container.widget.dart';
+import 'package:europaopen/utils/tuple.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,9 +36,15 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   LocationPage(
                     countries: state.data ?? <CountryModel>[],
+                    onCountrySelected: (CountryModel country) {},
                   ),
                   TravelPage(
                     countries: state.data ?? <CountryModel>[],
+                    onCountriesSelected: (
+                      CountryModel staringCountry,
+                      CountryModel destinationCountry,
+                      CountryModel? transitCountry,
+                    ) {},
                   ),
                 ],
               );

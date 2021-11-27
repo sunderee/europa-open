@@ -1,13 +1,16 @@
 import 'package:europaopen/data/models/countries/country.model.dart';
 import 'package:europaopen/ui/themes/color.theme.dart';
+import 'package:europaopen/utils/extensions/context.ext.dart';
 import 'package:flutter/material.dart';
 
 class TravelPage extends StatefulWidget {
   final List<CountryModel> countries;
+  final Function(CountryModel, CountryModel, CountryModel?) onCountriesSelected;
 
   const TravelPage({
     Key? key,
     required this.countries,
+    required this.onCountriesSelected,
   }) : super(key: key);
 
   @override
@@ -39,6 +42,7 @@ class _TravelPageState extends State<TravelPage> {
             ),
             textAlign: TextAlign.center,
           ),
+          const SizedBox(height: 4.0),
           Text(
             'Make sure you\'re aware of restrictions before embarking on a journey',
             style: Typography.englishLike2018.bodyText1,
@@ -123,6 +127,28 @@ class _TravelPageState extends State<TravelPage> {
                     }
                   },
                 ),
+              );
+            },
+          ),
+          const SizedBox(height: 16.0),
+          MaterialButton(
+            color: ColorTheme.colorProduct,
+            child: Text(
+              'Continue'.toUpperCase(),
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onPressed: () {
+              if (_startingCountry != null && _destinationCountry != null) {
+                widget.onCountriesSelected(
+                  _startingCountry!,
+                  _destinationCountry!,
+                  _transitCountry,
+                );
+              }
+              context.displaySnackBar(
+                'Starting and destination countries must be selected',
               );
             },
           ),
