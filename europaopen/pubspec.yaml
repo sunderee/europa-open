@@ -1,0 +1,41 @@
+name: europaopen
+description: Helping travelers inside the European Region navigate Covid travel restrictions
+
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.14.4 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Architecture
+  flutter_bloc: ^8.0.0
+
+  # UI-related
+  flutter_html: ^2.1.5
+
+  # Local persistence
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+
+  # Code quality
+  meta: ^1.7.0
+  equatable: ^2.0.3
+
+  # Utilities
+  url_launcher: ^6.0.15
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.4
+  hive_generator: ^1.1.1
+  build_runner: ^2.1.5
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/location.png
+    - assets/travel.png
