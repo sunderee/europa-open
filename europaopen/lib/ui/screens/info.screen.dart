@@ -1,8 +1,11 @@
+import 'package:europaopen/app.router.dart';
 import 'package:europaopen/blocs/info/info.cubit.dart';
 import 'package:europaopen/blocs/info/info.state.dart';
 import 'package:europaopen/blocs/status.dart';
 import 'package:europaopen/data/models/domains/domain.model.dart';
 import 'package:europaopen/data/models/regions/region.model.dart';
+import 'package:europaopen/data/models/rules/rule.model.dart';
+import 'package:europaopen/ui/screens/info_details.screen.dart';
 import 'package:europaopen/ui/themes/color.theme.dart';
 import 'package:europaopen/ui/widgets/error_container.widget.dart';
 import 'package:europaopen/ui/widgets/loading_container.widget.dart';
@@ -64,9 +67,18 @@ class InfoScreen extends StatelessWidget {
                             title: Text(element.domainName),
                             trailing: IconButton(
                               onPressed: () {
-                                // TODO: pass domain ID and navigate to info details
+                                AppRouter.navigateToInfoDetailsScreen(
+                                  context,
+                                  InfoDetailsScreenArguments(
+                                    element.domainID,
+                                    state.domainRulesData ?? <RuleModel>[],
+                                  ),
+                                );
                               },
-                              icon: const Icon(Icons.arrow_forward_ios),
+                              icon: const Icon(
+                                Icons.arrow_forward_ios,
+                                size: 20.0,
+                              ),
                             ),
                           )) ??
                       [

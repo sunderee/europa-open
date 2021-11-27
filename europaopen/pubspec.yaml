@@ -13,6 +13,9 @@ dependencies:
   # Architecture
   flutter_bloc: ^8.0.0
 
+  # UI-related
+  flutter_html: ^2.1.5
+
   # Local persistence
   hive: ^2.0.4
   hive_flutter: ^1.1.0
@@ -20,6 +23,9 @@ dependencies:
   # Code quality
   meta: ^1.7.0
   equatable: ^2.0.3
+
+  # Utilities
+  url_launcher: ^6.0.15
 
 dev_dependencies:
   flutter_test:

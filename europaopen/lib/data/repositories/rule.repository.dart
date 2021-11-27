@@ -42,7 +42,7 @@ Future<List<RuleModel>> _rulesForDomainIsolate(
     fullRulesList.add(rule);
   }
 
-  return [];
+  return fullRulesList;
 }
 
 abstract class IRuleRepository {

@@ -35,17 +35,26 @@ class HomeScreen extends StatelessWidget {
                 child: LoadingContainerWidget(),
               );
             } else if (state.status == ShortStatus.successful) {
+              final countries = state.data ?? <CountryModel>[];
+              countries.sort((CountryModel first, CountryModel second) => first
+                  .name
+                  .toLowerCase()
+                  .compareTo(second.name.toLowerCase()));
               return PageView(
                 children: [
                   LocationPage(
-                    countries: state.data ?? <CountryModel>[],
+                    countries: countries
+                        .where((CountryModel element) =>
+                            element.direction == CountryDirection.both ||
+                            element.direction == CountryDirection.to)
+                        .toList(),
                     onCountrySelected: (CountryModel country) {
                       infoCubit.retrieveInfoForCountry(country.code);
                       AppRouter.navigateToInfoScreen(context);
                     },
                   ),
                   TravelPage(
-                    countries: state.data ?? <CountryModel>[],
+                    countries: countries,
                     onCountriesSelected: (
                       CountryModel staringCountry,
                       CountryModel destinationCountry,
