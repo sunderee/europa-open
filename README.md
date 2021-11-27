@@ -2,7 +2,7 @@
 
 This project contains the source to the "old" native Android version of the app, as well as the current 1.0.0 version that is Flutter-based. From now on, only the Flutter version will receive future development, but I'm keeping the native Android codebase for educational and historic purposes.
 
-EuropaOpen is a cross-platform mobile application which helps travelers in the European Region to navigate various restrictions and obtain important information before embarking on a journey. Data is pulled from [Reopen Europa API](https://reopen.europa.eu/en). You can view my reversed-engineered API [in Postman](https://documenter.getpostman.com/view/10485728/TzeTKVR4).
+EuropaOpen is a cross-platform mobile application which helps travelers in the European Region navigate various restrictions and obtain important information before embarking on a journey. Data is pulled from [Reopen Europa API](https://reopen.europa.eu/en).
 
 ### Usage
 
