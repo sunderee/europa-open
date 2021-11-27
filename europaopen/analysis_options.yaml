@@ -2,8 +2,6 @@ include: package:flutter_lints/flutter.yaml
 
 analyzer:
   exclude: [build/**]
-  errors:
-    undefined_prefixed_name: ignore
   language:
     strict-raw-types: true
   strong-mode:
