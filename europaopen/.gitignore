@@ -48,3 +48,6 @@ app.*.map.json
 
 # Generated code
 *.g.dart
+
+# Debugs
+debug
