@@ -1,6 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
+part 'country.model.g.dart';
+
 @HiveType(typeId: 1)
 @immutable
 class CountryModel {

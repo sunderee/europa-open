@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Architecture
+  flutter_bloc: ^8.0.0
 
   # Local persistence
   hive: ^2.0.4

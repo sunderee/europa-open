@@ -1,7 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 class CacheProvider<T> {
-  static const String userBoxName = 'countries_box';
+  static const String countryBoxName = 'countries_box';
 
   final Box<T> boxInstance;
 

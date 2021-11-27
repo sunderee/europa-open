@@ -1,8 +1,21 @@
+import 'package:europaopen/data/models/countries/country.model.dart';
 import 'package:europaopen/ui/themes/color.theme.dart';
 import 'package:flutter/material.dart';
 
-class LocationPage extends StatelessWidget {
-  const LocationPage({Key? key}) : super(key: key);
+class LocationPage extends StatefulWidget {
+  final List<CountryModel> countries;
+
+  const LocationPage({
+    Key? key,
+    required this.countries,
+  }) : super(key: key);
+
+  @override
+  State<LocationPage> createState() => _LocationPageState();
+}
+
+class _LocationPageState extends State<LocationPage> {
+  CountryModel? _selectedCountry;
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +44,24 @@ class LocationPage extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           FormField(
-            builder: (FormFieldState<String> state) {
+            builder: (FormFieldState<CountryModel> state) {
               return DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
-                  value: 'Slovenia',
-                  items: [
-                    DropdownMenuItem<String>(
-                      value: 'Slovenia',
-                      child: Text('Slovenia'),
-                    ),
-                  ],
+                child: DropdownButton<CountryModel>(
+                  value: _selectedCountry ?? widget.countries.first,
+                  items: widget.countries
+                      .map(
+                        (CountryModel country) =>
+                            DropdownMenuItem<CountryModel>(
+                          value: country,
+                          child: Text(country.name),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (CountryModel? newSelectedCountry) {
+                    if (newSelectedCountry != null) {
+                      setState(() => _selectedCountry = newSelectedCountry);
+                    }
+                  },
                 ),
               );
             },
