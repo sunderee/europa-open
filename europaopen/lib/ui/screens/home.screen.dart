@@ -29,6 +29,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () => AppRouter.navigateToAboutScreen(context),
+            icon: const Icon(Icons.info_outline),
+          ),
+        ],
+      ),
       body: SafeArea(
         minimum: const EdgeInsets.all(16.0),
         child: BlocBuilder<CountryCubit, CountryState>(
