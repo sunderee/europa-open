@@ -30,29 +30,6 @@ class ApiProvider {
         .transform(const Utf8Decoder(allowMalformed: true))
         .reduce((String previous, String element) => previous + element);
   }
-
-  Future<String> makePostRequest(
-    String endpoint,
-    Map<String, dynamic> body, {
-    Map<String, String>? headers,
-  }) async {
-    final url = Uri.https(_baseURL, endpoint);
-    final request = await _httpClient.postUrl(url)
-      ..headers.addAll(headers)
-      ..write(json.encode(body));
-    final response = await request.close();
-
-    if (response.statusCode < 200 || response.statusCode >= 300) {
-      throw ApiException(
-        response.statusCode,
-        response.reasonPhrase,
-      );
-    }
-
-    return response
-        .transform(const Utf8Decoder(allowMalformed: true))
-        .reduce((String previous, String element) => previous + element);
-  }
 }
 
 class ApiException implements Exception {
