@@ -20,3 +20,5 @@ information.
 Project is open sourced under the MIT license. App is published on Google Play Store.
 
 [<img src="./store.svg">](https://play.google.com/store/apps/details?id=com.peteralexbizjak.europaopen)
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sunderee)
